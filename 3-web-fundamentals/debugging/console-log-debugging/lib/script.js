@@ -1,5 +1,5 @@
 function enoughFunds(price, qty, balance) {
-  const subtotal = (price * qty).toFixed(1);
+  const subtotal = Math.round(price * qty * 100) / 100;
   console.log(`subtotal: ${subtotal}`);
   console.log(`balance: ${balance}`);
   if(subtotal <= balance) return 'YOU HAVE ENOUGH MONEY';
