@@ -6,9 +6,11 @@ function diss() {
   console.log("You not good looking");
 }
 
-greet();
-setTimeout(greet, 3000);
-setTimeout(diss, 3000);
+// greet();
+// setTimeout(greet, 3000);
+// setTimeout(diss, 3000);
 
-const id = setInterval(diss, 3000);
-clearInterval(id);
+// const id = setInterval(diss, 3000);
+// clearInterval(id);
+
+setTimeout(() => 2 * diss(), 3000);
