@@ -12,3 +12,18 @@
     color: gray;
     text-decoration: line-through;
 }
+
+h1 {
+    text-align: center;
+    transition: all 1s;
+}
+
+.big {
+    transform: scale(2);
+    color: yellow;
+}
+
+.small {
+    transform: scale(.5);
+    color: blue;
+}
