@@ -2,7 +2,7 @@ const form = document.querySelector("form");
 const friendList = document.querySelector("#friend-list");
 const buttons = document.querySelectorAll("li button");
 
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
   const newFriendInput = document.querySelector("#first-name");
   const newLi = document.createElement("li");
@@ -10,7 +10,7 @@ form.addEventListener("submit", function(event) {
   newLi.innerText = newFriendInput.value;
   newButton.innerText = "Remove";
 
-  friendList.addEventListener("click", function(event) {
+  friendList.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
       event.target.parentElement.remove();
     }
