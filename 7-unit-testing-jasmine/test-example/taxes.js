@@ -5,3 +5,12 @@ function calculateTaxes(income) {
 }
 
 console.log(calculateTaxes(500));
+
+///////
+
+const usernames = [];
+let input = document.getElementById('username');
+
+function submitForm() {
+    usernames.push(input.value);
+}
