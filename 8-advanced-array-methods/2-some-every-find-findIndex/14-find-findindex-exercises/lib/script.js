@@ -23,3 +23,6 @@ function removeUser(usersArray, username) {
 
   return usersArray.splice(foundIndex,1)[0];
 }
+
+removeUser(users, 'akagen') // {username: 'akagen'}
+removeUser(users, 'akagen') // undefined
