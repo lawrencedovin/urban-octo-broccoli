@@ -22,4 +22,6 @@ function Triangle(a, b) {
   this.getHypotenuse = function() {
     return Math.sqrt(this.a ** 2 + this.b ** 2);
   }
-}
+};
+
+const t1 = new Triangle(2,3);
