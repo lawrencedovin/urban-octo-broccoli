@@ -3,7 +3,8 @@ function Triangle(a, b) {
   this.b = b;
 };
 
-// References a single method everytime Triangle gets instatiated
+// References a single method everytime Triangle gets instatiated.
+// 1 single copy
 Triangle.prototype.getArea = function() {
   return this.a * this.b / 2;
 }
