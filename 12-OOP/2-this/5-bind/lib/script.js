@@ -1,4 +1,4 @@
-const cat = {
+const blue = {
   name: 'Blue',
   breed: 'Garfield',
   dance(dance) {
@@ -11,3 +11,19 @@ const cat = {
     }
   }
 }
+
+const rocket = {
+  name: 'Rocket',
+  breed: 'Himalayan'
+};
+
+const bDance = blue.dance;
+const boundDance = bDance.bind(blue);
+
+const rocketDance = blue.dance.bind(rocket);
+
+const dog = {
+  name: 'Tyson',
+  breed: 'Mini Aussie',
+  dance: rocketDance // Is the value of rocket
+};
