@@ -1,7 +1,7 @@
 $('h1').text('lawrence pogi');
 // Selecting and changing all at once
 
-// $('li').text('I AM LI');
+$('li').text('I AM LI');
 // Changes all li inner text to I AM LI
 
 $('li').html('<b>BOLDDDD</b>')
