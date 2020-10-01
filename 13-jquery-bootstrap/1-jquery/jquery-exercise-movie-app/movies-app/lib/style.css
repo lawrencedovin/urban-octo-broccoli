@@ -1,0 +1,37 @@
+body, html {
+  height: 100%;
+}
+
+.background {
+  background-image: url("../images/matrix.gif");
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.app-header {
+  display: flex !important;
+  justify-content: center;
+  margin: 3.5rem 0;
+  color: white;
+}
+
+.app-header > span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-left: 2rem;
+}
+
+.table {
+  background: white;
+}
+
+.remove-button {
+  color: #b80000;
+  font-size: 20px;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+  color: #E30404;
+}

@@ -8,8 +8,9 @@ $movieForm.on('submit', function (e) {
 
     e.preventDefault();
 
-    if(!$("#movie-rating").val()) $($movieList).append(`<tr>${$movieTitle}${$movieRating}${$button}</tr>`);
-    else alert("Movie title input missing");
+    $("#movie-rating").val()
+    ? $($movieList).append(`<tr>${$movieTitle}${$movieRating}${$button}</tr>`) 
+    : alert("Movie title input missing");
 });
 
 $movieList.on('click', '.remove-button', function() {
