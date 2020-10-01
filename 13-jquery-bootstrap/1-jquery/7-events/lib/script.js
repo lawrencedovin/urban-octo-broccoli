@@ -11,10 +11,10 @@ $('li').on('mouseleave', () => {
     alert('just a prank bro.');
 });
 
-$('img').on('mouseenter', () => {
+$('img').on('mouseenter', function() {
     $(this).css('border', '10px solid blue');
 });
 
 $('img').on("click", function() {
     $(this).remove();
-})
+});
