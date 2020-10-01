@@ -1,10 +1,10 @@
-// $('#add-input').on('click', function() {
-//     $('form').append('<input type="text"/>');
-// });
-
-$('input').on('focus', function() {
-    $(this).val('BAMBOOZLED');
+$('#add-input').on('click', function() {
+    $('form').append('<input type="text"/>');
 });
+
+// $('input').on('focus', function() {
+//     $(this).val('BAMBOOZLED');
+// });
 
 $('form').on('focus', 'input', function() {
     $(this).val('BAMBOOZLED');

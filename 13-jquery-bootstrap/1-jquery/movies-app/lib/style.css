@@ -1,13 +1,30 @@
+body, html {
+  height: 100%;
+}
+
+.background {
+  background-image: url("../images/matrix3.gif");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .app-header {
   display: flex !important;
   justify-content: center;
   margin: 2.5rem 0;
+  color: white;
 }
 
 .app-header > span {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   margin-left: 2rem;
+}
+
+.table {
+  background: white;
 }
 
 .remove-button {
@@ -18,9 +35,4 @@
 .remove-button:hover {
   cursor: pointer;
   color: #E30404;
-}
-
-.header {
-  text-align: center;
-  margin: 0 auto;
 }
