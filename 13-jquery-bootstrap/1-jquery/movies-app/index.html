@@ -4,6 +4,10 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Movie App</title>
+      <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Ubuntu:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
       <!-- CSS only -->
       <link
          rel="stylesheet"
@@ -13,15 +17,12 @@
          />
       <link rel="stylesheet" href="lib/style.css" />
    </head>
-   <!-- Contains a form with two inputs for a title and rating along with a button to submit the form.
-      When the form is submitted, capture the values for each of the inputs and append them to the DOM along with a button to remove each title and rating from the DOM.
-      When the button to remove is clicked, remove each title and rating from the DOM. -->
    <body>
       <div class="container">
          <div class="row">
             <div class="col-md-6 mx-auto">
-               <h1>MOVIEEESSSSSS!!!!!</h1>
-               <form id="movie-form">
+              <i class="fas fa-film fa-2x app-header"><span>Rate me Movies M8!</span></i>
+               <form class="mb-5" id="movie-form">
                   <div class="input-group mb-3">
                      <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default"
@@ -42,8 +43,8 @@
                            >Rating</label
                            >
                      </div>
-                     <select class="custom-select" id="inputGroupSelect01">
-                        <option value="1" selected id="movie-rating">1</option>
+                     <select class="custom-select" id="movie-rating">
+                        <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -59,6 +60,25 @@
             </div>
          </div>
          </form>
+         <div class="row">
+            <div class="col-md-6 mx-auto">
+               <div class="container">
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>Title</th>
+                           <th>Rating</th>
+                           <th>
+                          </th>
+                        </tr>
+                     </thead>
+                     <tbody id="movie-list">
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
       </div>
       <!-- JS, Popper.js, and jQuery -->
       <script
@@ -74,6 +94,10 @@
       <script
          src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+         crossorigin="anonymous"
+         ></script>
+      <script
+         src="https://kit.fontawesome.com/8311178a58.js"
          crossorigin="anonymous"
          ></script>
       <script src="lib/script.js"></script>

@@ -1,8 +1,26 @@
-img {
-  max-width: 70%;
+.app-header {
+  display: flex !important;
+  justify-content: center;
+  margin: 2.5rem 0;
 }
 
-.image-center {
-  display: block;
-  margin: 10px auto;
+.app-header > span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-left: 2rem;
+}
+
+.remove-button {
+  color: #b80000;
+  font-size: 20px;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+  color: #E30404;
+}
+
+.header {
+  text-align: center;
+  margin: 0 auto;
 }
