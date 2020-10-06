@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How the Web Works</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- What is HTTP? Stands for Hypertext transfer protocol, which allows the customer
+    to get/ send data to a server
+
+    What is a URL? Stands for Uniform Resource Locator, which retrieves 
+    resources over the internet
+    
+    What is DNS? Doman Name System acts like a phone book for the internet 
+    which converts URLs into IP Addresses
+
+    What is a query string? A query string is used to send data in key value pairs
+    by a POST request to a url
+
+    What are two HTTP verbs and how are they different?
+    GET - Retrieves data from the sever
+    POST - Sends data to the server
+
+    What is an HTTP request? Is when a person makes a request to a server to load a website 
+
+    What is an HTTP response? Is when the server responds and loads the web pages for the person
+
+    What is an HTTP header? Give a couple examples of request and response headers you have seen.
+    What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+
+    Your browser translates the human readable URLs into an IP Address by DNS
+    Your browser then makes requests for information to that IP address (info, cookies, etc)
+    The server then sends back a response with the HTML along with a status code
+    The browser then creates a DOM from the HTML, and connects any other resources needed(CSS, JS, images) 
+    The browser then creates separate HTTP resuests for those additional resources to receive responses from the server for each -->
+
+    <!-- 
+    Using curl, make a GET request to the icanhazdadjoke.com API to find all jokes involving the word “pirate”
+    curl -k https://icanhazdadjoke.com/search?term=pirate
+
+    Use dig to find what the IP address is for icanhazdadjoke.com
+    dig https://icanhazdadjoke.com
+
+    Make a simple web page and serve it using python3 -m http.server. Visit the page in a browser. -->
+
+    <form action="/" method="GET" target="_blank" class="navbar-form navbar-right">
+      <div class="form-group">
+        <input id="email" name="email" type="email" placeholder="Email" class="form-control">
+      </div>
+      <div class="form-group">
+        <input id="password" name="password" type="password" placeholder="Password" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary" value="Submit">Sign INNN!</button>
+    </form>
+
+    <!-- <form action="/" method="get" target="_blank">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname"><br><br>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname"><br><br>
+      <input type="submit" value="Submit">
+    </form> -->
+
+    <script
+      src="http://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="lib/script.js"></script>
+  </body>
+</html>
+
+<!-- Edit the page to change the form type to POST, refresh in the browser and re-submit. Do you still see the field in the query string? Explore in Chrome how you can view the request and response headers, as well as the form data.
+
+Aha! It's not supposed to be there because this is now a POST request :)
+Post sends things in the body of the html, not the query string. It's much more secure. -->
