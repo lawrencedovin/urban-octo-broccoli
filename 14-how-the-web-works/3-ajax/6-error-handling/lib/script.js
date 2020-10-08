@@ -1,5 +1,5 @@
 const randomDogeButton = document.querySelector("#getRandomDoge");
-const dogeByBreedButton = document.querySelector("#getDogeByBreed")
+const dogeByBreedButton = document.querySelector("#getDogeByBreed");
 const dogePic = document.querySelector("img");
 const dogeInput = document.querySelector("#dogeInput");
 
