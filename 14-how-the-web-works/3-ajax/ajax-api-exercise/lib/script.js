@@ -18,7 +18,7 @@
       }
  */
 async function searchShows(query) {
-
+  const NO_IMAGE = 'https://store-images.s-microsoft.com/image/apps.65316.13510798887490672.6e1ebb25-96c8-4504-b714-1f7cbca3c5ad.f9514a23-1eb8-4916-a18e-99b1a9817d15?mode=scale&q=90&h=300&w=300';
   const response = await axios.get("http://api.tvmaze.com/search/shows", {
     params: { q: query },
   });
@@ -29,7 +29,7 @@ async function searchShows(query) {
         id: show.id,
         name: show.name,
         summary: show.summary,
-        image: show.image ? show.image.medium : 'No image found'
+        image: show.image ? show.image.medium : NO_IMAGE
       };
   });
 
