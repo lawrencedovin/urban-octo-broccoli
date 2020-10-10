@@ -60,13 +60,6 @@ function populateShows(shows) {
        </div>
       `);
 
-  //     data-show-id
-  // $(div).data("showId")
-  // async function popul
-
-  // <ul id="episodes-list">
-  //     </ul>
-
     $showsList.append($item);
     console.log($(".card").data("showId"));
   }
@@ -111,29 +104,37 @@ async function getEpisodes(id) {
       number: episode.number
     };
   });
-
-  // let epi = await getEpisodes(id);
-  // console.log(epi);
-  console.log(episodes);
-
   return episodes;
 
   // for(let d of data) {
   //   console.log(`${d.name} (season ${d.season}, episode ${d.number})`);
 
   // }
-
-  
-    // console.log(`id: ${d.id}`);
-    // console.log(`name: ${d.name}`);
-    // console.log(`season: ${d.season}`);
-    // console.log(`number: ${d.number}`);
-  // { id, name, season, number }
-  // 32087
   // TODO: return array-of-episode-info, as described in docstring above
 }
 
-async function populateEpisodes(id) {
-  
+const addEpisode = [
+{id: 152952, name: "Cracking a Killer's Code, Part 3", season: 1, number: 3},
+{id: 152953, name: "Blood on Their Hands, Part 1", season: 2, number: 1},
+{id: 152954, name: "Blood on Their Hands, Part 2", season: 2, number: 2},
+{id: 152955, name: "Uncustomed Goods, Part 1", season: 2, number: 3},
+{id: 152956, name: "Uncustomed Goods, Part 2", season: 2, number: 4}
+];
+
+async function populateEpisodes(episodes) {
+  for(let episode of episodes) {
+    const $newEpisodeInfo = $(`<li>${episode.name} (season ${episode.season}, ${episode.number}</li>`);
+    $("#episodes-list").append($newEpisodeInfo);
+  }
+  $("#episodes-area").show();
 }
+
+/** Handle click on show name. */
+
+// $("#shows-list").on("click", ".get-episodes", async function handleEpisodeClick(evt) {
+//   let showId = $(evt.target).closest(".Show").data("show-id");
+//   let episodes = await getEpisodes(showId);
+//   populateEpisodes(episodes);
+// });
+
 
