@@ -54,12 +54,21 @@ function populateShows(shows) {
            <div class="card-body">
              <h5 class="card-title">${show.name}</h5>
              <p class="card-text">${show.summary}</p>
+             <button class="btn btn-primary">Episodes</button>
            </div>
          </div>
        </div>
       `);
 
+  //     data-show-id
+  // $(div).data("showId")
+  // async function popul
+
+  // <ul id="episodes-list">
+  //     </ul>
+
     $showsList.append($item);
+    console.log($(".card").data("showId"));
   }
 }
 
@@ -91,6 +100,40 @@ async function getEpisodes(id) {
   // TODO: get episodes from tvmaze
   //       you can get this by making GET request to
   //       http://api.tvmaze.com/shows/SHOW-ID-HERE/episodes
+  const response = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`);
+  const { data } = response;
+  let episodes = data.map((result) => {
+    let episode = result;
+    return {
+      id: episode.id,
+      name: episode.name,
+      season: episode.season,
+      number: episode.number
+    };
+  });
 
+  // let epi = await getEpisodes(id);
+  // console.log(epi);
+  console.log(episodes);
+
+  return episodes;
+
+  // for(let d of data) {
+  //   console.log(`${d.name} (season ${d.season}, episode ${d.number})`);
+
+  // }
+
+  
+    // console.log(`id: ${d.id}`);
+    // console.log(`name: ${d.name}`);
+    // console.log(`season: ${d.season}`);
+    // console.log(`number: ${d.number}`);
+  // { id, name, season, number }
+  // 32087
   // TODO: return array-of-episode-info, as described in docstring above
 }
+
+async function populateEpisodes(id) {
+  
+}
+
