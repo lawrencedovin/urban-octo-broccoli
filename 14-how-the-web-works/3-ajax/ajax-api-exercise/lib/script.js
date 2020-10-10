@@ -54,7 +54,7 @@ function populateShows(shows) {
            <div class="card-body">
              <h5 class="card-title">${show.name}</h5>
              <p class="card-text">${show.summary}</p>
-             <button class="btn btn-primary">Episodes</button>
+             <button class="btn btn-primary get-episodes">Episodes</button>
            </div>
          </div>
        </div>
@@ -113,15 +113,8 @@ async function getEpisodes(id) {
   // TODO: return array-of-episode-info, as described in docstring above
 }
 
-const addEpisode = [
-{id: 152952, name: "Cracking a Killer's Code, Part 3", season: 1, number: 3},
-{id: 152953, name: "Blood on Their Hands, Part 1", season: 2, number: 1},
-{id: 152954, name: "Blood on Their Hands, Part 2", season: 2, number: 2},
-{id: 152955, name: "Uncustomed Goods, Part 1", season: 2, number: 3},
-{id: 152956, name: "Uncustomed Goods, Part 2", season: 2, number: 4}
-];
-
 async function populateEpisodes(episodes) {
+  $('#episodes-list').empty();
   for(let episode of episodes) {
     const $newEpisodeInfo = $(`<li>${episode.name} (season ${episode.season}, ${episode.number}</li>`);
     $("#episodes-list").append($newEpisodeInfo);
@@ -131,10 +124,11 @@ async function populateEpisodes(episodes) {
 
 /** Handle click on show name. */
 
-// $("#shows-list").on("click", ".get-episodes", async function handleEpisodeClick(evt) {
-//   let showId = $(evt.target).closest(".Show").data("show-id");
-//   let episodes = await getEpisodes(showId);
-//   populateEpisodes(episodes);
-// });
+$("#shows-list").on("click", ".get-episodes", async function handleEpisodeClick(evt) {
+  // let showId = $(evt.target).closest(".Show").data("show-id");
+  console.log($(evt.target));
+  // let episodes = await getEpisodes(showId);
+  // populateEpisodes(episodes);
+});
 
 
