@@ -48,7 +48,7 @@ function populateShows(shows) {
 
   for (let show of shows) {
     let $item = $(
-      `<div class="col-md-6 col-lg-3 Show" data-show-id="${show.id}">
+      `<div class="col-md-6 col-lg-3 show" data-show-id="${show.id}">
          <div class="card" data-show-id="${show.id}">
          <img class="card-img-top" src="${show.image}">
            <div class="card-body">
@@ -116,7 +116,7 @@ async function getEpisodes(id) {
 async function populateEpisodes(episodes) {
   $('#episodes-list').empty();
   for(let episode of episodes) {
-    const $newEpisodeInfo = $(`<li>${episode.name} (season ${episode.season}, ${episode.number}</li>`);
+    const $newEpisodeInfo = $(`<li>${episode.name} (season ${episode.season}, ${episode.number})</li>`);
     $("#episodes-list").append($newEpisodeInfo);
   }
   $("#episodes-area").show();
@@ -125,10 +125,12 @@ async function populateEpisodes(episodes) {
 /** Handle click on show name. */
 
 $("#shows-list").on("click", ".get-episodes", async function handleEpisodeClick(evt) {
-  // let showId = $(evt.target).closest(".Show").data("show-id");
+  let showId = $(evt.target).closest(".show").data("show-id");
+  // Finds the closest element with the class of show and checks for it's data attribute 
+  // data-show-id
   console.log($(evt.target));
-  // let episodes = await getEpisodes(showId);
-  // populateEpisodes(episodes);
+  let episodes = await getEpisodes(showId);
+  populateEpisodes(episodes);
 });
 
 
