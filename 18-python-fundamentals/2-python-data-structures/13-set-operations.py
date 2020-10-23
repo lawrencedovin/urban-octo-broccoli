@@ -14,3 +14,6 @@ moods ^ dwarfs # symmetric difference: {'sad', 'doc'}
 lemon = {'sour', 'yellow', 'fruit', 'bumpy'}
 banana = {'fruit', 'smooth', 'sweet', 'yellow'}
 orange = {'fruit', 'bumpy', 'orange', 'sweet'}
+
+for fruit in banana | lemon | orange:
+    print(fruit)
