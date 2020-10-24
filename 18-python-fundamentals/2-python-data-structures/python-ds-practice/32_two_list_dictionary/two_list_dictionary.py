@@ -1,4 +1,5 @@
 def two_list_dictionary(keys, values):
+    
     """Given keys and values, make dictionary of those.
     
         >>> two_list_dictionary(['x', 'y', 'z'], [9, 8, 7])
@@ -15,3 +16,23 @@ def two_list_dictionary(keys, values):
         >>> two_list_dictionary(['a', 'b', 'c'], [1, 2, 3, 4])
         {'a': 1, 'b': 2, 'c': 3}
    """
+
+    # out = {}
+
+    # for idx, val in enumerate(keys):
+    #     out[val] = values[idx] if idx < len(values) else None
+
+    # return out
+
+    combined_set = {}
+    
+    for index, key in enumerate(keys):
+        combined_set[key] = values[index] if index < len(values) else None
+    return combined_set
+
+print(two_list_dictionary(['x', 'y', 'z'], [9, 8, 7]))
+print(two_list_dictionary(['a', 'b', 'c', 'd'], [1, 2, 3]))
+print(two_list_dictionary(['a', 'b', 'c'], [1, 2, 3, 4]))
+    
+    
+   
