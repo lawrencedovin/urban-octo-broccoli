@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky</title>
+</head>
+<body>
+    <h1>Welcome to Lucky Number</h1>
+    
+    <p>{{msg}}</p>
+    {% if lucky_number >= 5 %}
+    <h2>This is your Lucky Number: {{lucky_number}}</h2>
+    <img src="https://i.giphy.com/media/11ISwbgCxEzMyY/giphy.webp" alt="">
+    {% else %}
+    <h2>Sorry your number is not Lucky: {{lucky_number}}</h2>
+    <img src="https://i.giphy.com/media/W0SLa0YuzWBZ6/giphy.webp" alt="">
+    {% endif %}
+
+</body>
+</html>
