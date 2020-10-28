@@ -13,6 +13,22 @@ def show_form():
 
 COMPLIMENTS = ['cool', 'clever', 'tenacious', 'awesome', 'Pythonic']
 
+# /spell/word
+# /spell/bananas
+
+@app.route('/spell-form')
+def show_spell_form():
+    return render_template('form_spell.html')
+
+@app.route('/spell-word')
+def spell_word():
+    word = request.args['word']
+    return render_template('spell_word.html', word=word)
+
+@app.route('/spell/<word>')
+def spell(word):
+    return render_template('spell_word.html', word=word.upper())
+
 @app.route('/greet')
 def get_greeting():
     username = request.args['username']
