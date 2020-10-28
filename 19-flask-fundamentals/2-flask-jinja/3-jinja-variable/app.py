@@ -7,6 +7,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'oh-so-secret'
 debug = DebugToolbarExtension(app)
 
+@app.route('/form')
+def show_form():
+    return render_template('form.html')
+
 @app.route('/hello')
 def say_hello():
     """Shows hello page"""

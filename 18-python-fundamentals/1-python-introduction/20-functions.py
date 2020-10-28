@@ -19,3 +19,6 @@ def send_email(to_email, from_email, subject, body):
     print(email)
 
 send_email(subject="Meow", to_email="blu@g.com", from_email="raisin@g.com", body="Hi blue, u r bad cat")
+
+def power(num, power=2):
+    return num ** power
