@@ -1,0 +1,41 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+footer, #content {
+    margin: 40px;
+}
+
+.navbar {
+    background: #000;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background: #ddd;
+    color: #000;
+}
+
+.messages > p {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+}
+
+.success {
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.error {
+    background: rgba(255, 0, 0, 0.1);
+}
