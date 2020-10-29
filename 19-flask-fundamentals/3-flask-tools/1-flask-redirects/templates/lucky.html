@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}
+Lucky Number Page
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to Lucky Number</h1>
+    
+<p>{{msg}}</p>
+{% if lucky_number >= 5 %}
+<h2>This is your Lucky Number: {{lucky_number}}</h2>
+<img src="https://i.giphy.com/media/11ISwbgCxEzMyY/giphy.webp" alt="">
+{% else %}
+<h2>Sorry your number is not Lucky: {{lucky_number}}</h2>
+<img src="https://i.giphy.com/media/W0SLa0YuzWBZ6/giphy.webp" alt="">
+{% endif %}
+{% endblock %}
