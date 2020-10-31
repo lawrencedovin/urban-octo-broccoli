@@ -20,6 +20,7 @@ def get_home():
 
 @app.route('/questions/<int:id>')
 def get_question(id):
-    return render_template('question.html', question=id)
+    question = surveys["satisfaction"].questions[id].question
+    return render_template('question.html', question=question)
 
 
