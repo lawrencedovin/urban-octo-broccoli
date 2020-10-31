@@ -1,0 +1,69 @@
+html {
+  box-sizing: border-box;
+  font-family: "Roboto";
+  font-size: 62.5%;
+  height: 100%;
+  width: 100%;
+
+  @media only screen and (max-width: 75em) {
+    font-size: 50%;
+  }
+}
+
+body {
+  background: linear-gradient(180deg, #00ffe0 0%, #ff9900 100%);
+}
+
+input {
+    width: 2rem;
+    height: 2rem;
+}
+
+.title {
+    margin-bottom: 3rem;
+}
+
+.btn {
+    background: #35EA5D;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 0;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #24BC45;
+}
+
+.form-background-container, .survey-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-background-container {
+  height: 54rem;
+  width: 90rem;
+}
+.form-background--left,
+.form-background--right {
+  height: 100%;
+}
+
+.form-background--left {
+  background: #ff9900;
+}
+
+.form-background--right {
+  background: #000;
+}
+
+.survey-form {
+  height: 40rem;
+  width: 65rem;
+  background: #fff;
+  z-index: 1;
+  padding: 6rem;
+}

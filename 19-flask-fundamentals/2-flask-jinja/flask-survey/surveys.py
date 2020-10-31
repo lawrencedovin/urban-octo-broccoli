@@ -51,6 +51,3 @@ surveys = {
     "satisfaction": satisfaction_survey,
     "personality": personality_quiz,
 }
-
-for value in satisfaction_survey.questions:
-    print(value.question)
