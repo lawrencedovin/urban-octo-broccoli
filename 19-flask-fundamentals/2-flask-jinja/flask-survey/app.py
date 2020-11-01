@@ -26,6 +26,7 @@ def get_question(id):
         choices = QUESTIONS[id].choices
         return render_template('question.html', question=question, choices=choices, id=id)
     except:
+        flash(f'Incorrect ID entered: {id}', 'error')
         return redirect(f'/questions/{len(responses)}')
 
 @app.route('/answer', methods=['POST'])
