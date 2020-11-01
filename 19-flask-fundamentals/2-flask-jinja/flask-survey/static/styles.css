@@ -19,12 +19,22 @@ input {
     height: 2rem;
 }
 
+input[type="radio"] {
+  margin: -.5rem 1rem 0 0;
+  vertical-align: middle;
+}
+
+label {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
 .title {
     margin-bottom: 3rem;
 }
 
 .btn {
-    background: #35EA5D;
+    background: #16f5d2;
     padding: 1rem;
     font-size: 1.6rem;
     font-weight: bold;
@@ -33,7 +43,7 @@ input {
 }
 
 .btn:hover {
-    background: #24BC45;
+    background: #14c3a8;
 }
 
 .form-background-container, .survey-form {
@@ -66,4 +76,12 @@ input {
   background: #fff;
   z-index: 1;
   padding: 6rem;
+}
+
+.question-progress-container{
+  background: #16f5d2;
+    padding: 1rem;
+    width: 20rem;
+    text-align: center;
+    margin: -9rem auto 6rem;
 }
