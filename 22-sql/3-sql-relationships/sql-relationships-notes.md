@@ -102,3 +102,14 @@ SELECT *
  FULL JOIN studios
  ON movies.studio_id = studios.id;
 ```
+
+### Count of how many movies a studio produced
+```
+
+SELECT name, COUNT(*)
+ FROM movies
+ JOIN studios
+ ON movies.studio_id = studios.id
+ GROUP BY studios.name
+ ORDER BY COUNT(*);
+```
