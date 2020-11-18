@@ -50,3 +50,20 @@ DELETE FROM movies
 DELETE FROM studios
  WHERE id=1;
 ```
+
+# Inner Joins
+###  Sample Inner Join
+```
+SELECT title, name
+ FROM movies
+ JOIN studios
+ ON movies.studio_id = studios.id;
+```
+
+###  Aliases
+```
+SELECT movies.id as movies_id, studios.id as studios_id
+ FROM movies
+ JOIN studios
+ ON movies.studio_id = studios.id;
+```
