@@ -34,7 +34,9 @@ INSERT INTO studios(name, founded_in) VALUES ('Warner Bros', '1950-10-10');
 
 INSERT INTO movies (title, release_year, runtime, rating, studio_id)
  VALUES ('Batman', 2018, 130, 'PG-13', 4);
-
+```
+### Deletion
+```
 --Option 1: Clear out the studio_id columns, keeps movie but studio becomes NULL
 UPDATE movies 
  SET studio_id=NULL
@@ -65,5 +67,38 @@ SELECT title, name
 SELECT movies.id as movies_id, studios.id as studios_id
  FROM movies
  JOIN studios
+ ON movies.studio_id = studios.id;
+```
+
+# Outer Joins
+### Left Join
+```
+-- All rows from first table(left), combined with matching
+-- rows from the second table (right)
+
+SELECT title, name AS studio_name
+ FROM movies
+ LEFT JOIN studios
+ ON movies.studio_id = studios.id;
+```
+
+### Right Join
+```
+-- The matching rows from the first table(left), combined with all the rows from the second table (right)
+-- rows from the second table (right)
+
+SELECT title, name AS studio_name
+ FROM movies
+ RIGHT JOIN studios
+ ON movies.studio_id = studios.id;
+```
+
+### Full Join
+```
+-- All the rows from both table (left and right).
+
+SELECT *
+ FROM movies
+ FULL JOIN studios
  ON movies.studio_id = studios.id;
 ```
