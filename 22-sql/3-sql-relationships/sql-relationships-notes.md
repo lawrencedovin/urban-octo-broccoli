@@ -145,3 +145,63 @@ INSERT INTO roles(movie_id, actor_id)
 DELETE FROM actors
  WHERE id = 1;
 ```
+
+# Many-to-Many Joins
+### Join both roles and actors tables
+```
+SELECT *
+ FROM roles
+ JOIN actors
+ ON roles.actor_id = actors.id;
+```
+
+### Get names and number of movies of actors
+```
+SELECT first_name, last_name, COUNT(*) as total_roles
+ FROM roles
+ JOIN actors
+ ON roles.actor_id = actors.id
+ GROUP BY actors.id;
+```
+
+### Get names and number of movies of actors order by the highest
+```
+SELECT first_name, last_name, COUNT(*) as total_roles
+ FROM roles
+ JOIN actors
+ ON roles.actor_id = actors.id
+ GROUP BY actors.id
+ ORDER BY COUNT(*) DESC;
+```
+
+### Joining roles, actors and movies table
+```
+SELECT *
+ FROM roles
+ JOIN actors
+ ON roles.actor_id = actors.id
+ JOIN movies
+ ON roles.movie_id = movies.id;
+```
+
+### Selecting movie title, actor names using aliases
+```
+SELECT m.title, a.first_name, a.last_name
+ FROM roles r
+ JOIN movies m
+ ON r.movie_id = m.id
+ JOIN actors a
+ ON r.actor_id = a.id;
+```
+
+### Selecting movie release year, title and actor's name
+```
+SELECT m.release_year, m.title, a.first_name, a.last_name
+ FROM movies m
+ JOIN roles r
+ ON m.id = r.movie_id
+ JOIN actors a
+ ON a.id = r.actor_id
+ WHERE m.release_year > 2000
+ ORDER BY m.release_year;
+```
