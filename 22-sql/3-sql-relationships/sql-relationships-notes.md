@@ -113,3 +113,35 @@ SELECT name, COUNT(*)
  GROUP BY studios.name
  ORDER BY COUNT(*);
 ```
+
+# Many-to-Many Insert
+### Setting Up Actors and Roles
+```
+CREATE TABLE actors
+ (id SERIAL PRIMARY KEY,
+  first_name TEXT,
+  last_name TEXT,
+  birth_date TEXT);
+
+CREATE TABLE roles
+ (id SERIAL PRIMARY KEY,
+  movie_id INTEGER REFERENCES movies (id),
+  actor_id INTEGER REFERENCES actors (id));
+  
+```
+
+### Inserting into roles
+```
+INSERT INTO roles(movie_id, actor_id)
+ VALUES
+ (10, 4),
+ (10, 5),
+ (10, 6),
+ (11, 4);
+```
+
+### When DELETE CASCADE is setup
+```
+DELETE FROM actors
+ WHERE id = 1;
+```
