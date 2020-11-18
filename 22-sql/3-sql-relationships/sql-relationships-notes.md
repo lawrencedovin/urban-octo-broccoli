@@ -18,3 +18,35 @@ CREATE TABLE movies
   title TEXT,
   studio_id INTEGER REFERENCES studios (id));
 ```
+
+# Working with One-to-Many Relationships  
+###  FK Constraint
+```
+INSERT INTO studios (name, founded_in) VALUES
+ ('Walt Disney Studios', '1953-06-23'),
+ ('20th Century Fox', '1935-05-31'),
+ ('Universal Pictures', '1912-04-30');
+
+INSERT INTO movies (title, studio_id)
+ VALUES ('Star Wars: The Force Awakens', 1);
+
+INSERT INTO studios(name, founded_in) VALUES ('Warner Bros', '1950-10-10');
+
+INSERT INTO movies (title, release_year, runtime, rating, studio_id)
+ VALUES ('Batman', 2018, 130, 'PG-13', 4);
+
+--Option 1: Clear out the studio_id columns, keeps movie but studio becomes NULL
+UPDATE movies 
+ SET studio_id=NULL
+ WHERE studio_id=1;
+
+DELETE FROM studios
+ WHERE id=1;
+
+--Option 2: Delete the movies associated with that studio first.
+DELETE FROM movies
+ WHERE studio_id=1;
+
+DELETE FROM studios
+ WHERE id=1;
+```
