@@ -205,3 +205,48 @@ SELECT m.release_year, m.title, a.first_name, a.last_name
  WHERE m.release_year > 2000
  ORDER BY m.release_year;
 ```
+
+# Many-to-Many Outer Joins
+### Join both roles and movies tables
+```
+SELECT *
+ FROM roles r
+ JOIN movies m
+ ON r.movie_id = m.id;
+```
+
+### Uses a Right Join which takes everything from the movies and everything overlapping with roles
+```
+SELECT *
+ FROM roles r
+ RIGHT JOIN movies m
+ ON r.movie_id = m.id;
+```
+
+### Uses a Left Join which takes everything from the roles and everything overlapping with movies
+```
+SELECT *
+ FROM roles r
+ LEFT JOIN movies m
+ ON r.movie_id = m.id;
+```
+
+### Uses a Right Join which takes everything from the movies and everything overlapping with roles. Also joins the actors table.
+```
+SELECT *
+ FROM roles r
+ RIGHT JOIN movies m
+ ON r.movie_id = m.id
+ JOIN actors a
+ ON r.actor_id = a.id;
+```
+
+### Combines all table information even if they do not overlap.
+```
+SELECT *
+ FROM roles r
+ FULL JOIN movies m
+ ON r.movie_id = m.id
+ FULL actors a
+ ON r.actor_id = a.id;
+```
