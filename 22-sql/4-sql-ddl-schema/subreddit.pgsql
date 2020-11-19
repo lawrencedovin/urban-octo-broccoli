@@ -1,18 +1,43 @@
-CREATE TABLE subreddits (
-    id SERIAL,
-    name VARCHAR(15) NOT NULL,
-    description TEXT,
-    subscribers INTEGER CHECK (subscribers > 0),
-    is_private BOOLEAN
-);
-
-INSERT INTO subreddits
-(name, description, subscribers, is_private)
-VALUES
-('pumpkin', 'Your fav pg 4 pumpkins', 5, false);
+DROP database reddit_db;
+CREATE DATABASE reddit_db;
+\c reddit_db;
 
 CREATE TABLE users (
-    id SERIAL,
+    id SERIAL PRIMARY KEY,
     username VARCHAR(15) UNIQUE NOT NULL,
     password VARCHAR(20) NOT NULL
 );
+
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    comment_text TEXT NOT NULL  
+);
+
+CREATE TABLE subreddits (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+    name VARCHAR(15) NOT NULL,
+    description TEXT,
+    subscribers INTEGER CHECK (subscribers > 0) DEFAULT 1,
+    is_private BOOLEAN DEFAULT false
+);
+
+INSERT INTO users (username, password)
+VALUES
+('graylady', 'asdas'),
+('stevie-chicks', 'adsasdd');
+
+INSERT INTO subreddits (name, user_id)
+VALUES
+('chickens', 2),
+('waterluvers', 1);
+
+INSERT INTO comments (user_id, comment_text)
+VALUES
+(1, 'YOLO SWAG'),
+(2, 'Popcorn is good');
+
+-- INSERT INTO subreddits (name, user_id)
+-- VALUES
+-- ('chickenasds', 3);
