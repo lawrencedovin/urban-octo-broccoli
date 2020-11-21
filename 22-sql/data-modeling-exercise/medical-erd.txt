@@ -1,38 +1,38 @@
 MedicalCenter
 -
-id PK int
-name string
-address string
+id PK SERIAL
+name TEXT
+address TEXT
 
 Doctors
 -
-id PK int
-first_name string
-last_name string
-medical_center_id int FK >- MedicalCenter.id
+id PK SERIAL
+first_name TEXT
+last_name TEXT
+medical_center_id INTEGER FK >- MedicalCenter.id
 
 DoctorsPatients
 -
-id PK int
-doctor_id int FK >- Doctors.id
-patient_id int FK >- Patients.id
+id PK SERIAL
+doctor_id INTEGER FK >- Doctors.id
+patient_id INTEGER FK >- Patients.id
 
 
 Patients
 -
-id PK int
-first_name string
-last_name string
-birthday string
+id PK SERIAL;
+first_name TEXT
+last_name TEXT
+birthday DATE
 
 PatientsDiseases
 -
-id PK int
-patient_id int FK >- Patients.id
-disease_id int FK >- Diseases.id
+id PK SERIAL
+patient_id INTEGER FK >- Patients.id
+disease_id INTEGER FK >- Diseases.id
 
 Diseases
 -
-id PK int
-name string
-description string
+id PK SERIAL
+name TEXT
+description TEXT

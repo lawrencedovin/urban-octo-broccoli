@@ -1,0 +1,30 @@
+Users
+-
+id PK SERIAL
+first_name TEXT
+last_name TEXT
+email TEXT
+username VARCHAR(15)
+encrypted_password VARCHAR(15)
+prefered_region_id INTEGER FK >- Regions.id
+
+Regions
+-
+id PK INTEGER
+name VARCHAR(15)
+
+Posts
+-
+id PK SERIAL
+title VARCHAR(15)
+text TEXT
+location TEXT
+price FLOAT
+user_id INTEGER FK >- Users.id
+category_id INTEGER FK >- Categories.id
+region_id INTEGER FK >- Regions.id
+
+Categories
+-
+id PK SERIAL
+name VARCHAR(15)

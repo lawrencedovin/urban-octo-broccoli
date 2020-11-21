@@ -1,58 +1,58 @@
--- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
 CREATE TABLE "MedicalCenter" (
-    "id" int   NOT NULL,
-    "name" string   NOT NULL,
-    "address" string   NOT NULL,
+    "id" SERIAL   NOT NULL,
+    "name" TEXT   NOT NULL,
+    "address" TEXT   NOT NULL,
     CONSTRAINT "pk_MedicalCenter" PRIMARY KEY (
         "id"
      )
 );
 
 CREATE TABLE "Doctors" (
-    "id" int   NOT NULL,
-    "first_name" string   NOT NULL,
-    "last_name" string   NOT NULL,
-    "medical_center_id" int   NOT NULL,
+    "id" SERIAL   NOT NULL,
+    "first_name" TEXT   NOT NULL,
+    "last_name" TEXT   NOT NULL,
+    "medical_center_id" INTEGER   NOT NULL,
     CONSTRAINT "pk_Doctors" PRIMARY KEY (
         "id"
      )
 );
 
 CREATE TABLE "DoctorsPatients" (
-    "id" int   NOT NULL,
-    "doctor_id" int   NOT NULL,
-    "patient_id" int   NOT NULL,
+    "id" SERIAL   NOT NULL,
+    "doctor_id" INTEGER   NOT NULL,
+    "patient_id" INTEGER   NOT NULL,
     CONSTRAINT "pk_DoctorsPatients" PRIMARY KEY (
         "id"
      )
 );
 
 CREATE TABLE "Patients" (
-    "id" int   NOT NULL,
-    "first_name" string   NOT NULL,
-    "last_name" string   NOT NULL,
-    "birthday" string   NOT NULL,
+    "id" SERIAL;   NOT NULL,
+    "first_name" TEXT   NOT NULL,
+    "last_name" TEXT   NOT NULL,
+    "birthday" DATE   NOT NULL,
     CONSTRAINT "pk_Patients" PRIMARY KEY (
         "id"
      )
 );
 
 CREATE TABLE "PatientsDiseases" (
-    "id" int   NOT NULL,
-    "patient_id" int   NOT NULL,
-    "disease_id" int   NOT NULL,
+    "id" SERIAL   NOT NULL,
+    "patient_id" INTEGER   NOT NULL,
+    "disease_id" INTEGER   NOT NULL,
     CONSTRAINT "pk_PatientsDiseases" PRIMARY KEY (
         "id"
      )
 );
 
 CREATE TABLE "Diseases" (
-    "id" int   NOT NULL,
-    "name" string   NOT NULL,
-    "description" string   NOT NULL,
+    "id" SERIAL   NOT NULL,
+    "name" TEXT   NOT NULL,
+    "description" TEXT   NOT NULL,
     CONSTRAINT "pk_Diseases" PRIMARY KEY (
         "id"
      )
