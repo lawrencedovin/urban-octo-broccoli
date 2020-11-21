@@ -1,0 +1,50 @@
+Teams
+-
+id SERIAL PK
+name TEXT
+city TEXT
+
+Players
+-
+id SERIAL PK
+name TEXT
+birthday DATE
+height TEXT
+current_team_id INTEGER FK >- Teams.id
+
+Referees
+-
+id SERIAL PK
+name TEXT
+
+Matches
+-
+id SERIAL PK
+home_team_id INTEGER FK >- Teams.id
+away_team_id INTEGER FK >- Teams.id
+location TEXT
+date DATE
+start_time TEXT
+season_id INTEGER
+head_referee_id INTEGER FK >- Referees.id
+assistent_referee_1_id INTEGER FK >- Referees.id
+assistent_referee_2_id INTEGER FK >- Referees.id
+
+Goals
+-
+id SERIAL PK
+player_id INTEGER FK >- Players.id
+match_id INTEGER FK >- Matches.id
+
+Lineups
+-
+id SERIAL PK
+player_id INTEGER FK >- Players.id
+match_id INTEGER FK >- Matches.id
+team_id INTEGER FK >- Teams.id
+
+Season
+-
+id SERIAL PK FK >- Matches.season_id
+start_date DATE
+end_date DATE
