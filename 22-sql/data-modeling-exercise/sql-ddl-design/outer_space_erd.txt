@@ -1,0 +1,28 @@
+Planets
+-
+id SERIAL PK
+name TEXT
+orbital_period_in_years FLOAT
+orbits_id INTEGER FK >- Orbits.id
+galaxy_id INTEGER FK >- Galaxy.id
+
+Moons
+-
+id SERIAL PK
+name TEXT
+
+PlanetsMoons
+-
+id SERIAL PK
+planets_id INTEGER FK >- Planets.id
+moons_id INTEGER FK >- Moons.id
+
+Orbits
+-
+id SERIAL PK
+name TEXT
+
+Galaxy
+-
+id SERIAL PK
+name TEXT
