@@ -135,6 +135,14 @@ VALUES
     ('Alvin', 'Leathes', '1965-02-19', 8),
     ('Cory', 'Squibbes', '1982-08-20', 9);
 
+-- 1 | Jennifer Finch
+-- 2 | Thadeus Gathercoal
+-- 3 | Sonja Pauley
+-- 4 | Waneta Skeleton
+-- 5 | Berkie Wycliff
+-- 6 | Alvin Leathes
+-- 7 | Cory Squibbes
+
 INSERT INTO flights
     (departure, arrival, airline_id, from_location_id, to_location_id)
 VALUES
@@ -149,6 +157,30 @@ VALUES
     ('2019-02-06 16:28:00', '2019-02-06 19:18:00', 6, 9, 17),
     ('2019-01-20 19:30:00', '2019-01-20 22:45:00', 7, 10, 18);
 
+INSERT INTO tickets
+    (seat, customer_id, flight_id)
+VALUES
+    ('33B', 1, 1),
+    ('8A', 2, 2),
+    ('12F', 3, 3),
+    ('20A', 1, 4),
+    ('23D', 4, 5),
+    ('18C', 2, 6),
+    ('9E', 5, 7),
+    ('1A', 6, 8),
+    ('32B', 5, 9),
+    ('10D', 7, 10);
+
+-- 1  | 33B, Jennifer Finch, 1
+-- 2  | 8A, Thadeus Gathercoal, 2 
+-- 3  | 12F, Sonja Pauley, 3
+-- 4  | 20A, Jennifer Finch, 4
+-- 5  | 23D, Waneta Skeleton, 5
+-- 6  | 18C, Thadeus Gathercoal, 6
+-- 7  | 9E, Berkie Wycliff, 7
+-- 8  | 1A, Alvin Leathes, 8
+-- 9  | 32B, Berkie Wycliff, 9
+-- 10 | 10D, Cory Squibbes, 10
 
             
                 
