@@ -102,7 +102,40 @@ VALUES
 --  9 | United States, Charlotte
 -- 10 | Brazil, Sao Paolo        
 
-            
+INSERT INTO airlines
+    (names)
+VALUES
+    ('United'), ('British Airways'), ('Delta'), ('TUI Fly Belgium'), ('Air China'), 
+    ('American Airlines'), ('Avianca Brasil');
+
+-- 1 | United
+-- 2 | British Airways
+-- 3 | Delta
+-- 4 | TUI Fly Belgium
+-- 5 | Air China
+-- 6 | American Airlines
+-- 7 | Avianca Brasil
+
+INSERT INTO citizenships
+    (location_id)
+VALUES
+    (1), (2), (3), (5), (6), (7), (8), (9), (10),
+    (11), (12), (13), (14), (15), (16), (17), (18)
+
+-- Represents the id numbers from locations ie id = 1 is United States, Washington DC
+
+INSERT INTO customers
+    (first_name, last_name, birthday, citizenship_id)
+VALUES
+    ('Jennifer', 'Finch', '1992-06-25', 1),
+    ('Thadeus', 'Gathercoal', '1985-02-01', 2),
+    ('Sonja', 'Pauley', '1940-10-15', 3),
+    ('Waneta', 'Skeleton', '1996-04-12', 5),
+    ('Berkie', 'Wycliff', '1987-12-28', 7),
+    ('Alvin', 'Leathes', '1965-02-19', 8),
+    ('Cory', 'Squibbes', '1982-08-20', 9);
+
+
             
                 
 
