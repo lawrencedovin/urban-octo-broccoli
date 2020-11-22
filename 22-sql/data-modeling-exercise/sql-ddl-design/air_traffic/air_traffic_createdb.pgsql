@@ -91,8 +91,18 @@ VALUES
     (6, 11), (1, 12), (7, 13), (8, 14), (9, 15),
     (1, 16), (1, 17), (10, 18);
 
--- 1 | Washington DC       6 | Dubai           11 | London         16 | Chicago
--- 2 | Tokyo               7 | New York        12 | Las Vegas      17 | New Orleans
--- 3 | Los Angeles         8 | Cedar Rapids    13 | Mexico City    18 | Santiago
--- 4 | Seattle             9 | Charlotte       14 | Casablanca
--- 5 | Paris              10 | Sao Paolo       15 | Beijing
+--  1 | United States, Washington DC     11 | United Kingdom, London                
+--  2 | Japan, Tokyo                     12 | United States, Las Vegas             
+--  3 | United States, Los Angeles       13 | Mexico, Mexico City        
+--  4 | United States, Seattle           14 | Morocco, Casablanca                    
+--  5 | France, Paris                    15 | China, Beijing                      
+--  6 | UAE, Dubai                       16 | United States, Chicago
+--  7 | United States, New York          17 | United States, New Orleans
+--  8 | United States, Cedar Rapids      18 | Chile, Santiago
+--  9 | United States, Charlotte
+-- 10 | Brazil, Sao Paolo        
+
+            
+            
+                
+
