@@ -1,5 +1,5 @@
 -- from the terminal run:
--- psql < outer_space.pgsql
+-- psql < outer_space_createdb.pgsql
 
 DROP DATABASE IF EXISTS outer_space;
 
