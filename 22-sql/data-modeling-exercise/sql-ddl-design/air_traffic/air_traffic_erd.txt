@@ -1,0 +1,49 @@
+City
+-
+id SERIAL PK FK >- Location.city_id
+name TEXT
+
+Country
+-
+id SERIAL PK FK >- Location.country_id
+name TEXT
+
+Location
+-
+id SERIAL PK
+country_id INTEGER
+city_id INTEGER
+
+Airline
+-
+id SERIAL PK
+name TEXT
+
+Customer
+-
+id SERIAL PK
+first_name TEXT
+last_name TEXT
+birthday DATE
+citizenship_id INTEGER FK >- Citizenship.id
+
+Citizenship
+-
+id SERIAL PK
+location_id FK >- Location.id
+
+Flight
+-
+id SERIAL PK
+departure DATE
+arrival DATE
+airline_id FK >- Airline.id
+from_location_id FK >- Location.id
+to_location_id FK >- Location.id
+
+Tickets
+-
+id SERIAL PK
+seat TEXT
+customer_id INTEGER FK >- Customer.id
+flight_id INTEGER FK >- Flight.id
