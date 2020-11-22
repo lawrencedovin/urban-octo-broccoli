@@ -1,0 +1,66 @@
+Planets
+-
+id SERIAL PK
+name TEXT
+orbital_period_in_years FLOAT
+orbits_id INTEGER FK >- Orbits.id
+galaxy_id INTEGER FK >- Galaxy.id
+
+Moons
+-
+id SERIAL PK
+name TEXT
+
+PlanetsMoons
+-
+id SERIAL PK
+planets_id INTEGER FK >- Planets.id
+moons_id INTEGER FK >- Moons.id
+
+Orbits
+-
+id SERIAL PK
+name TEXT
+
+Galaxy
+-
+id SERIAL PK
+name TEXT
+
+City
+-
+id SERIAL PK
+name TEXT
+
+Country
+-
+id SERIAL PK
+name TEXT
+
+Airline
+-
+id SERIAL PK
+name TEXT
+
+Customer
+-
+id SERIAL PK
+first_name TEXT
+last_name TEXT
+birthday DATE
+
+Citizenship
+-
+id SERIAL PK
+country_id INTEGER
+city_id INTEGER
+
+CustomerCitizenship
+-
+id SERIAL PK
+customer_id INTEGER
+citizenship_id INTEGER
+
+
+
+
