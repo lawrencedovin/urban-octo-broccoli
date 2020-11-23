@@ -1,5 +1,5 @@
 -- from the terminal run:
--- psql < music.sql
+-- psql < music_old.sql
 
 DROP DATABASE IF EXISTS music;
 

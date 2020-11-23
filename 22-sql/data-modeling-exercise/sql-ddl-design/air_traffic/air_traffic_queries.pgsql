@@ -40,7 +40,7 @@ ON locations.country_id = countries.id
 JOIN cities
 ON locations.city_id = cities.id;
 
--- Queries for all flight details hooray! :')
+-- Queries for all flight details hooray! 😅
 SELECT flights.id AS flight_id, departure, arrival, 
 airlines.name AS airlines, 
 from_countries.name AS from_country, 
@@ -67,7 +67,7 @@ ON to_locations.country_id = to_countries.id
 JOIN cities AS to_cities
 ON to_locations.city_id = to_cities.id;
 
--- Queries for all of the information for a customer's tickets
+-- Queries for all of the information for a customer's tickets 🥳
 SELECT tickets.id AS ticket_id, 
 seat, customers.first_name, customers.last_name,
 flight_id, flights.departure, flights.arrival,
