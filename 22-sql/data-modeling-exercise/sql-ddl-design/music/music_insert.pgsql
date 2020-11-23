@@ -1,4 +1,3 @@
-
 INSERT INTO artists
     (name)
 VALUES

@@ -1,5 +1,5 @@
 -- from the terminal run:
--- psql < music_old.sql
+-- psql < music_createdb.pgsql
 
 DROP DATABASE IF EXISTS music;
 
@@ -25,6 +25,15 @@ CREATE TABLE producers
     name TEXT
 );
 
+CREATE TABLE songs
+(
+    id SERIAL PRIMARY KEY,
+    title TEXT,
+    duration_in_seconds INTEGER,
+    release_date DATE,
+    album_id INTEGER NOT NULL REFERENCES albums(id)
+);
+
 CREATE TABLE producers_songs
 (
     id SERIAL PRIMARY KEY,
@@ -37,15 +46,6 @@ CREATE TABLE artists_songs
     id SERIAL PRIMARY KEY,
     artist_id INTEGER NOT NULL REFERENCES artists(id),
     song_id INTEGER NOT NULL REFERENCES songs(id)
-);
-
-CREATE TABLE songs
-(
-    id SERIAL PRIMARY KEY,
-    title TEXT,
-    duration_in_seconds INTEGER,
-    release_date DATE,
-    album_id INTEGER NOT NULL REFERENCES albums(id)
 );
 
 -- INSERT INTO songs
