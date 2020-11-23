@@ -36,7 +36,7 @@ CREATE TABLE artists_songs
 (
     id SERIAL PRIMARY KEY,
     artist_id INTEGER NOT NULL REFERENCES artists(id),
-    songs_id INTEGER NOT NULL REFERENCES songs(id)
+    song_id INTEGER NOT NULL REFERENCES songs(id)
 );
 
 CREATE TABLE songs
@@ -47,71 +47,6 @@ CREATE TABLE songs
     release_date DATE,
     album_id INTEGER NOT NULL REFERENCES albums(id)
 );
-
--- CREATE TABLE songs
--- (
---   id SERIAL PRIMARY KEY,
---   title TEXT NOT NULL,
---   duration_in_seconds INTEGER NOT NULL,
---   release_date DATE NOT NULL,
---   artists TEXT[] NOT NULL,
---   album TEXT NOT NULL,
---   producers TEXT[] NOT NULL
--- );
-
-INSERT INTO artists
-    (name)
-VALUES
-    ('Hanson'), ('Queen'), ('Mariah Cary'), ('Boyz II Men'), ('Lady Gaga'), 
-    ('Bradley Cooper'), ('Nickelback'), ('Jay Z'), ('Alicia Keys'), ('Katy Perry'), 
-    ('Juicy J'), ('Maroon 5'), ('Christina Aguilera'), ('Avril Lavigne'), ('Destiny''s Child');
-
---  1 | Hanson                           11 | Juicy J                
---  2 | Queen                            12 | Maroon 5             
---  3 | Mariah Cary                      13 | Christina Aguilera        
---  4 | UBoyz II Men                     14 | Avril Lavigne                    
---  5 | Lady Gaga                        15 | Destiny's Child                     
---  6 | Bradley Cooper                     
---  7 | Nickelback          
---  8 | Jay Z    
---  9 | Alicia Keys
--- 10 | Katy Perry
-
-INSERT INTO albums
-    (name)
-VALUES
-    ('Middle of Nowhere'), ('A Night at the Opera'), ('Daydream'), ('A Star Is Born'), ('Silver Side Up'), 
-    ('The Blueprint 3'), ('Prism'), ('Hands All Over'), ('Let Go'), ('The Writing''s on the Wall');
-
---  1 | Middle of Nowhere                                    
---  2 | A Night at the Opera                                    
---  3 | Daydream                            
---  4 | A Star Is Born                                     
---  5 | Silver Side Up                                           
---  6 | The Blueprint 3
---  7 | Prism                    
---  8 | Hands All Over          
---  9 | Let Go  
--- 10 | The Writing's on the Wall
-
-INSERT INTO producers
-    (name)
-VALUES
-    ('Dust Brothers'), ('Stephen Lironi'), ('Roy Thomas Baker'), ('Walter Afanasieff'), ('Benjamin Rice'), 
-    ('Rick Parashar'), ('Al Shux'), ('Max Martin'), ('Cirkut'), ('Shellback'), 
-    ('Benny Blanco'), ('The Matrix'), ('Darkchild');
-
---  1 | Dust Brothers                      11 | Benny Blanco               
---  2 | Stephen Lironi                     12 | The Matrix             
---  3 | Roy Thomas Baker                   13 | Darkchild       
---  4 | Walter Afanasieff                                       
---  5 | Benjamin Rice                                          
---  6 | Rick Parashar                     
---  7 | Al Shux         
---  8 | Max Martin   
---  9 | Cirkut
--- 10 | Shellback
-
 
 -- INSERT INTO songs
 --   (title, duration_in_seconds, release_date, artists, album, producers)
