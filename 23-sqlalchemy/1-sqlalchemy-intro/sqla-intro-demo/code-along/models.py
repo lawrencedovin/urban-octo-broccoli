@@ -9,6 +9,13 @@ def connect_db(app):
 # MODELS GO BELOW!
 class Pet(db.Model):
 
+    def __repr__(self):
+        pet = self
+        return f'<Pet id={pet.id} name={pet.name} species={pet.species} hunger={pet.hunger}>'
+    
+    def get_data():
+        return Pet.query.all()
+
     __tablename__ = 'pets'
 
     id = db.Column(db.Integer,
