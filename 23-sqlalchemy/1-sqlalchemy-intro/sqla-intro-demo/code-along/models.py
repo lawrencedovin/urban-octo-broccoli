@@ -15,6 +15,12 @@ class Pet(db.Model):
     
     def get_data():
         return Pet.query.all()
+    
+    def greet(self):
+        pet = self
+        if pet.name == 'Cowboy':
+            return f'Yeehaw mah name is {pet.name} and I am a {pet.species} from Texas.'
+        return f'HI my name is {pet.name}, and I am a {pet.species} pls feed me.'
 
     __tablename__ = 'pets'
 
