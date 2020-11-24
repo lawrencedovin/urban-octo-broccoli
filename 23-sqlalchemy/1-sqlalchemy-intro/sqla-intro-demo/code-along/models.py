@@ -8,21 +8,15 @@ def connect_db(app):
 
 # MODELS GO BELOW!
 class Pet(db.Model):
+    __tablename__ = 'pets'
+
+    @classmethod
+    def get_by_species(cls, species):
+        return cls.query.filter_by(species=species).all()
 
     def __repr__(self):
         pet = self
         return f'<Pet id={pet.id} name={pet.name} species={pet.species} hunger={pet.hunger}>'
-    
-    def get_data():
-        return Pet.query.all()
-    
-    def greet(self):
-        pet = self
-        if pet.name == 'Cowboy':
-            return f'Yeehaw mah name is {pet.name} and I am a {pet.species} from Texas.'
-        return f'HI my name is {pet.name}, and I am a {pet.species} pls feed me.'
-
-    __tablename__ = 'pets'
 
     id = db.Column(db.Integer,
                    primary_key=True,
@@ -35,4 +29,17 @@ class Pet(db.Model):
     hunger = db.Column(db.Integer,
                        nullable=False,
                        default=20)
+    
+    def greet(self):
+        pet = self
+        if pet.name == 'Cowboy':
+            return f'Yeehaw mah name is {pet.name} and I am a {pet.species} from Texas.'
+        return f'HI my name is {pet.name}, and I am a {pet.species} pls feed me.'
+    
+    def feed(self, amt=20):
+        """Update hunger based off of amt"""
+        pet = self
+        pet.hunger -= amt
+        """Takes the max of each value if negative takes the new max value of 0"""
+        self.hunger = max(self.hunger, 0)
                     
