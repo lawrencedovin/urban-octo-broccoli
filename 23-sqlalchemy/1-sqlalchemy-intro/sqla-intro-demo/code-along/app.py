@@ -24,3 +24,9 @@ def list_pets():
 
     pets = Pet.query.all()
     return render_template('list.html', pets=pets)
+
+@app.route('/<int:pet_id>')
+def show_pet_details(pet_id):
+    """Show specific pet details"""
+    pet = Pet.query.get(pet_id)
+    return render_template('pet-details.html', pet=pet)
