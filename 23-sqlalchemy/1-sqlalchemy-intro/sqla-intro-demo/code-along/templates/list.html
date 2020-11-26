@@ -1,8 +1,9 @@
 {% extends 'home.html'%}
 {% block content %}
+<h1>All Pets</h1>
 <ul>
     {% for pet in pets %}
-    <li>{{ pet.name }}</li>
+    <li>{{pet.id}} - {{pet.name}}</li>
     {% endfor %}
 </ul>
 {% endblock %}
