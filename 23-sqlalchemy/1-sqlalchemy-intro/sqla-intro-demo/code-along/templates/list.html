@@ -3,7 +3,7 @@
 <h1>All Pets</h1>
 <ul>
     {% for pet in pets %}
-    <li>{{pet.id}} - {{pet.name}}</li>
+    <li><a href="{{pet.id}}">{{pet.name}}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
