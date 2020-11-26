@@ -17,3 +17,10 @@ connect_db(app)
 def home_page():
     """Shows home page"""
     return render_template('home.html')
+
+@app.route('/list')
+def list_pets():
+    """List pets and show add form."""
+
+    pets = Pet.query.all()
+    return render_template('list.html', pets=pets)
