@@ -25,8 +25,23 @@ def list_pets():
     pets = Pet.query.all()
     return render_template('list.html', pets=pets)
 
+@app.route('/list', methods=['POST'])
+def create_pet():
+    name = request.form['name']
+    species = request.form['species']
+    hunger = request.form['hunger']
+    hunger = int(hunger) if hunger else None
+
+    new_pet = Pet(name=name, species=species, hunger=hunger)
+    db.session.add(new_pet)
+    db.session.commit()
+
+    return redirect(f'/{new_pet.id}')
+
 @app.route('/<int:pet_id>')
 def get_pet_details(pet_id):
+    """Shows specific details of pet"""
+
     pet = Pet.query.get_or_404(pet_id)
 
     return render_template('pet-details.html', pet=pet)

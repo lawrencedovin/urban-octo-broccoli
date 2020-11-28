@@ -1,4 +1,6 @@
 {% extends 'home.html' %}
+
+{% block title %}{{pet.name}}{% endblock %}
 {% block content %}
 <h1>{{pet.name}} Details</h1>
 <h2>ID: {{pet.id}}</h2>
