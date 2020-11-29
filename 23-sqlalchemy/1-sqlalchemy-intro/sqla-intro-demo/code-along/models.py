@@ -10,6 +10,18 @@ def connect_db(app):
 class Pet(db.Model):
     __tablename__ = 'pets'
 
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+    name = db.Column(db.String(50),
+                     nullable=False,
+                     unique=True)
+    species = db.Column(db.String(30),
+                        nullable=True)
+    hunger = db.Column(db.Integer,
+                       nullable=False,
+                       default=20)
+    
     @classmethod
     def get_by_species(cls, species):
         return cls.query.filter_by(species=species).all()
@@ -23,23 +35,10 @@ class Pet(db.Model):
         cls.query.filter(cls.hunger == 100).delete()
         db.session.commit()
 
-
     def __repr__(self):
         pet = self
         return f'<Pet id={pet.id} name={pet.name} species={pet.species} hunger={pet.hunger}>'
 
-    id = db.Column(db.Integer,
-                   primary_key=True,
-                   autoincrement=True)
-    name = db.Column(db.String(50),
-                     nullable=False,
-                     unique=True)
-    species = db.Column(db.String(30),
-                        nullable=True)
-    hunger = db.Column(db.Integer,
-                       nullable=False,
-                       default=20)
-    
     def greet(self):
         pet = self
         if pet.name == 'Cowboy':
