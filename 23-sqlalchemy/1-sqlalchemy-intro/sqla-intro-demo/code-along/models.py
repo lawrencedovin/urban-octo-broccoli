@@ -18,6 +18,12 @@ class Pet(db.Model):
     def get_all_hungry(cls):
         return cls.query.filter(cls.hunger > 10).all()
 
+    @classmethod
+    def delete_all_hungry(cls):
+        cls.query.filter(cls.hunger == 100).delete()
+        db.session.commit()
+
+
     def __repr__(self):
         pet = self
         return f'<Pet id={pet.id} name={pet.name} species={pet.species} hunger={pet.hunger}>'
