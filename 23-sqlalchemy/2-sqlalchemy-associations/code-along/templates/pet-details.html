@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block title %}{{pet.name}}{% endblock %}
+{% block content %}
+<h1>{{pet.name}} Details</h1>
+<h2>ID: {{pet.id}}</h2>
+<h2>Species: <a href="/species/{{pet.species}}">{{pet.species}}</a></h2>
+<h2>Current Hunger: {{pet.hunger}}</h2>
+<blockquote>
+    {{pet.greet()}}
+</blockquote>
+<a href="/list">Go back</a>
+{% endblock %}

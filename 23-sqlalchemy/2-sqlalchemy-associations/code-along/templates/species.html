@@ -1,0 +1,10 @@
+{% extends 'home.html'%}
+{% block content %}
+<h1>{{species}}</h1>
+<ul>
+    {% for pet in pets %}
+    <li><a href='/{{pet.id}}'>{{pet.name}}</a></li>
+    {% endfor %}
+</ul>
+<a href='/list'>Go back to pet list</a>
+{% endblock %}
