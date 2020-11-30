@@ -17,7 +17,10 @@ class Department(db.Model):
     dept_name = db.Column(db.Text, nullable=False, unique=True)
     phone = db.Column(db.Text)
 
-    employees = db.relationship('Employee')
+    def __repr__(self):
+        return f'<Department {self.dept_code} {self.dept_name} {self.phone}>'
+
+    # employees = db.relationship('Employee')
 
 class Employee(db.Model):
     """Employee Model"""
@@ -29,4 +32,8 @@ class Employee(db.Model):
     state = db.Column(db.String(2), nullable=False, default='CA')
     dept_code = db.Column(db.Text, db.ForeignKey('departments.dept_code'))
 
-    department = db.relationship('Department')
+    def __repr__(self):
+        return f'<Employee {self.name} {self.state} {self.dept_code}>'
+
+    # department = db.relationship('Department')
+    department = db.relationship('Department', backref='employees')
