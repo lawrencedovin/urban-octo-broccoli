@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Phone Directory{% endblock %}
+
+{% block content %}
+<h1>Phone numbers</h1>
+<table>
+    <thead>
+        <th>Employee</th>
+        <th>Department Name</th>
+        <th>Phone</th>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{employee.name}}</td>
+            <td>{{employee.department.dept_name}}</td>
+            <td>
+                {% if employee.department.phone %}
+                {{employee.department.phone}}
+                {% else %}
+                -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
