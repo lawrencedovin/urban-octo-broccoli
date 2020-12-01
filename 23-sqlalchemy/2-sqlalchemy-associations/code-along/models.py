@@ -19,7 +19,7 @@ class Department(db.Model):
 
     def __repr__(self):
         return f'<Department {self.dept_code} {self.dept_name} {self.phone}>'
-
+        
     # employees = db.relationship('Employee')
 
 class Employee(db.Model):
@@ -37,3 +37,12 @@ class Employee(db.Model):
 
     # department = db.relationship('Department')
     department = db.relationship('Department', backref='employees')
+
+def get_directory():
+    employees = Employee.query.all()
+
+    for employee in employees:
+        if employee.department is not None:
+            print(employee.name, employee.department.dept_name, employee.department.phone)  
+        else:
+            print(employee.name, '-', '-')
