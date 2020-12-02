@@ -23,15 +23,15 @@ class PetModelTestCase(TestCase):
     
     def test_greet(self):
         pet = Pet(name="TestPet", species="dog", hunger=10)
-        self.assertEquals(pet.greet(), "HI my name is TestPet, and I am a dog pls feed me.")
+        self.assertEqual(pet.greet(), "HI my name is TestPet, and I am a dog pls feed me.")
     
     def test_feed(self):
         pet = Pet(name="TestPet", species="dog", hunger=10)
         pet.feed(5)
-        self.assertEquals(pet.hunger, 5)
+        self.assertEqual(pet.hunger, 5)
 
         pet.feed(999)
-        self.assertEquals(pet.hunger, 0)
+        self.assertEqual(pet.hunger, 0)
     
     def test_get_by_species(self):
         pet = Pet(name="TestPet", species="dog", hunger=10)
@@ -39,5 +39,5 @@ class PetModelTestCase(TestCase):
         db.session.commit()
 
         dogs = Pet.get_by_species('dog')
-        self.assertEquals(dogs, [pet])
+        self.assertEqual(dogs, [pet])
 
