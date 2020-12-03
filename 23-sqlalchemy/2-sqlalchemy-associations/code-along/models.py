@@ -46,3 +46,16 @@ def get_directory():
             print(employee.name, employee.department.dept_name, employee.department.phone)  
         else:
             print(employee.name, '-', '-')
+
+def get_directory_join():
+    directory = db.session.query(
+        Employee.name, Department.dept_name, Department.phone).join(Department).all()
+    
+    for name, department, phone in directory:
+        print(name, department, phone)
+
+def get_directory_join_2():
+    directory = db.session.query(Employee, Department).join(Department).all()
+    
+    for emp, dept in directory:
+        print(emp.name, dept.dept_name, dept.phone)
