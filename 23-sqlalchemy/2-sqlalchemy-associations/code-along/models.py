@@ -38,15 +38,15 @@ class Employee(db.Model):
     # department = db.relationship('Department')
     department = db.relationship('Department', backref='employees')
 
-class Project(db.model):
-    """"Project Model""""
+class Project(db.Model):
+    """Project Model"""
 
     __tablename__ = 'projects'
 
     proj_code = db.Column(db.Text, primary_key=True)
     proj_name = db.Column(db.Text, nullable=False, unique=True)
 
-class EmployeeProject(db.model):
+class EmployeeProject(db.Model):
     """Employee Project Model"""
 
     __tablename__ = 'employees_projects'
