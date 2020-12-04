@@ -38,6 +38,25 @@ class Employee(db.Model):
     # department = db.relationship('Department')
     department = db.relationship('Department', backref='employees')
 
+class Project(db.model):
+    """"Project Model""""
+
+    __tablename__ = 'projects'
+
+    proj_code = db.Column(db.Text, primary_key=True)
+    proj_name = db.Column(db.Text, nullable=False, unique=True)
+
+class EmployeeProject(db.model):
+    """Employee Project Model"""
+
+    __tablename__ = 'employees_projects'
+
+    emp_id = db.Column(db.Integer, db.ForeignKey('employees.id'), primary_key=True)
+    proj_code = db.Column(db.Text, db.ForeignKey('projects.proj_code'), primary_key=True)
+    role = db.Column(db.Text)
+
+    
+
 def get_directory():
     employees = Employee.query.all()
 
@@ -59,3 +78,25 @@ def get_directory_join_2():
     
     for emp, dept in directory:
         print(emp.name, dept.dept_name, dept.phone)
+
+def get_directory_outerjoin_left():
+    """Gets all of the Employee data and gets Department data if matched"""
+
+    directory = db.session.query(Employee, Department).outerjoin(Department).all()
+    
+    for emp, dept in directory:
+        if dept:
+            print(emp.name, dept.dept_name, dept.phone)
+        else:
+            print(emp.name, '-', '-')
+
+def get_directory_outerjoin_right():
+    """Gets all of the Department data and gets Employee data if matched"""
+
+    directory = db.session.query(Employee, Department).outerjoin(Employee).all()
+    
+    for emp, dept in directory:
+        if emp:
+            print(emp.name, dept.dept_name, dept.phone)
+        else:
+            print('-', dept.dept_name, dept.phone)
