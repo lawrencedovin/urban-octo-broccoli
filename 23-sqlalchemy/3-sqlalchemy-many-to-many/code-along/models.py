@@ -30,13 +30,17 @@ class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False, unique=True)
     state = db.Column(db.String(2), nullable=False, default='CA')
-    dept_code = db.Column(db.Text, db.ForeignKey('departments.dept_code'))
+    dept_code = db.Column(db.Text, db.ForeignKey('departments.dept_code'))    
+    
+    # department = db.relationship('Department')
+    department = db.relationship('Department', backref='employees')
 
+    assignments = db.relationship('EmployeeProject', backref='employee')
+    
     def __repr__(self):
         return f'<Employee {self.name} {self.state} {self.dept_code}>'
 
-    # department = db.relationship('Department')
-    department = db.relationship('Department', backref='employees')
+
 
 class Project(db.Model):
     """Project Model"""
@@ -45,6 +49,8 @@ class Project(db.Model):
 
     proj_code = db.Column(db.Text, primary_key=True)
     proj_name = db.Column(db.Text, nullable=False, unique=True)
+
+    assignments = db.relationship('EmployeeProject', backref='project')
 
 class EmployeeProject(db.Model):
     """Employee Project Model"""
