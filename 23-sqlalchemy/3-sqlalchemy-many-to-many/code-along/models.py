@@ -36,11 +36,11 @@ class Employee(db.Model):
     department = db.relationship('Department', backref='employees')
 
     assignments = db.relationship('EmployeeProject', backref='employee')
+
+    projects = db.relationship('Project', secondary='employees_projects', backref='employees')
     
     def __repr__(self):
         return f'<Employee {self.name} {self.state} {self.dept_code}>'
-
-
 
 class Project(db.Model):
     """Project Model"""

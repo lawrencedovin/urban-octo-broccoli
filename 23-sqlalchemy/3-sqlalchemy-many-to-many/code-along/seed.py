@@ -21,7 +21,8 @@ freelancer = Employee(name='Free Lancer')
 car = Project(proj_code='car', proj_name='Design Car')
 server = Project(proj_code='server', proj_name='Deploy Server')
 
-billy_job = EmployeeProject(emp_id=1, proj_code='car', role='Blueprints Car')
+billy_job_1 = EmployeeProject(emp_id=1, proj_code='car', role='Blueprints Car')
+billy_job_2 = EmployeeProject(emp_id=1, proj_code='server', role='Serves Ice Cream')
 buko_job = EmployeeProject(emp_id=2, proj_code='server', role='Serves Pizza')
 
 db.session.add_all([marketing, accounting, sales])
@@ -29,5 +30,5 @@ db.session.add_all([billy, buko, bob, jim, ryan, freelancer])
 db.session.add_all([car, server])
 db.session.commit()
 
-db.session.add_all([billy_job, buko_job])
+db.session.add_all([billy_job_1, billy_job_2, buko_job])
 db.session.commit()
