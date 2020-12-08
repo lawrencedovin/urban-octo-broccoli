@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from models import *
+from forms import AddSnackForm
 
 app = Flask(__name__)
 
@@ -17,3 +18,17 @@ connect_db(app)
 def list_phones():
     employees = Employee.query.all()
     return render_template('phones.html', employees=employees)
+
+@app.route('/snacks/new', methods=['GET', 'POST'])
+def add_snack():
+    """Snack add form; handle adding."""
+
+    form = AddSnackForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        price = form.price.data
+        flash(f'Added {name} at {price}')
+        return redirect('/snacks/new')
+    else:
+        return render_template('add_snack_form.html', form=form)
