@@ -14,6 +14,10 @@ debug = DebugToolbarExtension(app)
 
 connect_db(app)
 
+@app.route('/')
+def home_page():
+    return render_template('home.html')
+
 @app.route('/phones')
 def list_phones():
     employees = Employee.query.all()
@@ -28,7 +32,7 @@ def add_snack():
     if form.validate_on_submit():
         name = form.name.data
         price = form.price.data
-        flash(f'Added {name} at {price}')
-        return redirect('/snacks/new')
+        flash(f'Added {name} at ${price}')
+        return redirect('/')
     else:
         return render_template('add_snack_form.html', form=form)

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>New Snack</h1>
-<form id='snack-add-form' method='POST'>
+<form method='POST'>
     {{ form.hidden_tag() }}
     <!-- Includes hidden tags. Gets the CSRF token but hides it from user -->
     {% for field in form
@@ -12,7 +12,7 @@
         {{field.label}}
         {{field}}
 
-        {{% for error in field.error %}}
+        {% for error in field.error %}
             {{error}}
         {% endfor %}
     </p>
