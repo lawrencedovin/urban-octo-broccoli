@@ -32,7 +32,13 @@ def add_snack():
     if form.validate_on_submit():
         name = form.name.data
         price = form.price.data
-        flash(f'Added {name} at ${price}')
+        quantity = form.quantity.data
+        total_price = price * quantity
+        is_healthy = form.is_healthy.data
+        if is_healthy:
+            flash(f'Added {name} at ${price} each and a healthy snack. Quantity: {quantity}, total price: ${total_price}')
+        else: 
+            flash(f'Added {name} at ${price} and a junkfood snack. Quantity: {quantity}, total price: ${total_price}')
         return redirect('/')
     else:
         return render_template('add_snack_form.html', form=form)
