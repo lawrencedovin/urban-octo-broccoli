@@ -20,4 +20,4 @@ class NewEmployeeForm(FlaskForm):
 
     name = StringField('Employee\'s Name')
     state = StringField('State')
-    dept_code = StringField('Department Code')
+    dept_code = SelectField('Department Code')
