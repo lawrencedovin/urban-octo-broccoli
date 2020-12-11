@@ -12,8 +12,8 @@
         {{field.label}}
         {{field}}
 
-        {% for error in field.error %}
-            {{error}}
+        {% for err in field.errors %}
+            {{err}}
         {% endfor %}
     </p>
     {% endfor %}

@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///employees_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SECRET_KEY'] = 'chickenzarecool123'
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 debug = DebugToolbarExtension(app)
 
 connect_db(app)
@@ -51,7 +51,6 @@ def add_employee():
     # Adds a tuple to the dept_code.choices select form field ie. ('mktg', 'Marketing')
     depts = db.session.query(Department.dept_code, Department.dept_name)
     form.dept_code.choices = depts
-
     if form.validate_on_submit():
         name = form.name.data
         state = form.state.data
