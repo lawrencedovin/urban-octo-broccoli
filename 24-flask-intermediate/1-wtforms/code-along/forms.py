@@ -18,7 +18,7 @@ class AddSnackForm(FlaskForm):
     category = SelectField('Category', choices=[
                             ('ice','Ice Cream'), ('chips', 'Potato Chips'), ('candy', 'Candy')])
 
-class NewEmployeeForm(FlaskForm):
+class EmployeeForm(FlaskForm):
     """Form for adding employees."""
 
     states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", 

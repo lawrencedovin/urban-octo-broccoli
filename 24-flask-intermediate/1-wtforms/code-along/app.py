@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from models import *
-from forms import AddSnackForm, NewEmployeeForm
+from forms import AddSnackForm, EmployeeForm
 
 app = Flask(__name__)
 
@@ -46,7 +46,7 @@ def add_snack():
 @app.route('/employees/new', methods=['GET', 'POST'])
 def add_employee():
 
-    form = NewEmployeeForm()
+    form = EmployeeForm()
 
     # Adds a tuple to the dept_code.choices select form field ie. ('mktg', 'Marketing')
     depts = db.session.query(Department.dept_code, Department.dept_name)
@@ -63,3 +63,17 @@ def add_employee():
         return redirect('/phones')
     else:
         return render_template('add_employee_form.html', form=form)
+
+@app.route('/employees/<int:user_id>/edit', methods=['GET', 'POST'])
+def edit_user(user_id):
+    if form.validate_on_submit():
+        employee = Employee.query.get_or_404(user_id)
+        form = EmployeeForm(obj=employee)
+        employee.name = form.name.data
+        employee.state = form.state.data
+        employee.dept_code = form.dept_code.data
+
+        db.session.commit()
+        return redirect(f'/employees/{user_id}')
+    else:
+        return render_template('edit_employee_form.html', form=form)
