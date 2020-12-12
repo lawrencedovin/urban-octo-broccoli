@@ -15,7 +15,7 @@
       <tbody>
         {% for employee in employees %}
         <tr>
-          <td>{{employee.name}}</td>
+          <td>{{employee.name}}<a class="btn btn-sm btn-primary" href="/employees/{{employee.id}}/edit"> Edit</a></td>
           <td>{{employee.department.dept_name}}</td>
           {% if employee.department.phone %} 
           <td>{{employee.department.phone}}</td> 

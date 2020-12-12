@@ -66,14 +66,19 @@ def add_employee():
 
 @app.route('/employees/<int:user_id>/edit', methods=['GET', 'POST'])
 def edit_user(user_id):
+    employee = Employee.query.get_or_404(user_id)
+    # obj=employee prepopulates fields automatically based on employee data
+    form = EmployeeForm(obj=employee)
+
+    depts = db.session.query(Department.dept_code, Department.dept_name)
+    form.dept_code.choices = depts
+
     if form.validate_on_submit():
-        employee = Employee.query.get_or_404(user_id)
-        form = EmployeeForm(obj=employee)
         employee.name = form.name.data
         employee.state = form.state.data
         employee.dept_code = form.dept_code.data
 
         db.session.commit()
-        return redirect(f'/employees/{user_id}')
+        return redirect('/phones')
     else:
         return render_template('edit_employee_form.html', form=form)
