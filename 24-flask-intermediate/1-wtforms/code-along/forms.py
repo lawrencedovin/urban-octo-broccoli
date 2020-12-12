@@ -27,6 +27,6 @@ class EmployeeForm(FlaskForm):
           "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
           "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
-    name = StringField('Employee\'s Name', validators=[InputRequired(message='Employee name cannot be blank')])
+    name = StringField('Employee\'s Name', validators=[InputRequired(message='Name cannot be blank')])
     state = SelectField('State', choices=[(state, state) for state in states])
     dept_code = SelectField('Department Code')
