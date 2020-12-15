@@ -13,6 +13,7 @@ app.config['TESTING'] = True
 # This is a bit of hack, but don't use Flask DebugToolbar
 app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
 
+# For the post request we need to disable WTF CSRF in order to send a test
 app.config['WTF_CSRF_ENABLED'] = False
 
 class SnackViewsTestCase(TestCase):
