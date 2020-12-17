@@ -1,11 +1,11 @@
 import requests
+from secrets import API_SECRET_KEY
 
-key = 'RGUMAOp4rwfRvBpnwUfSq5GIKDuGHPXX'
 location = '11911 Rocking Horse Rd, Rockville, MD'
 URL = 'http://www.mapquestapi.com/geocoding/v1/address'
 
 response = requests.get(URL, 
-                        params={"key": key, "location": location})
+                        params={"key": API_SECRET_KEY, "location": location})
 
 json_response = response.json()
 results = json_response["results"]
