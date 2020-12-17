@@ -9,5 +9,7 @@ response = requests.get(URL,
 
 json_response = response.json()
 results = json_response["results"]
+location = results[0]["locations"]
+coords = location[0]["latLng"]
 
-print(f'The results are: {results}')
+print(f'The coords are: {coords["lat"]} {coords["lng"]}')
