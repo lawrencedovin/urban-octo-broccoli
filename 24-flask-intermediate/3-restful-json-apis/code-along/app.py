@@ -25,3 +25,12 @@ def create_todo():
     db.session.commit()
     response_json = jsonify(todo=new_todo.serialize())
     return (response_json, 201)
+
+@app.route('/api/todos/<int:id>', methods=["PATCH"])
+def update_todo(id):
+    todo = Todo.query.get_or_404(id)
+    # db.session.query(Todo).filter_by(id=id).update(request.json)
+    todo.title = request.json.get("title", todo.title)
+    todo.done = request.json.get("done", todo.done)
+    db.session.commit()
+    return jsonify(todo=todo.serialize())
