@@ -34,3 +34,10 @@ def update_todo(id):
     todo.done = request.json.get("done", todo.done)
     db.session.commit()
     return jsonify(todo=todo.serialize())
+
+@app.route('/api/todos/<int:id>', methods=["DELETE"])
+def delete_todo(id):
+    todo = Todo.query.get_or_404(id)
+    db.session.delete(todo)
+    db.session.commit()
+    return jsonify(message=f"deleted {id}")
