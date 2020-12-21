@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from models import *
 
 app = Flask(__name__)
@@ -7,6 +7,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 
 connect_db(app)
+
+@app.route('/')
+def index_page():
+    todos = Todo.query.all()
+    return render_template('index.html', todos=todos)
 
 @app.route('/api/todos')
 def list_todos():
