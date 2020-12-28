@@ -1,25 +1,44 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
 
+bcrypt = Bcrypt()
+
+
 def connect_db(app):
+    """Connect to database."""
+
     db.app = app
     db.init_app(app)
 
-class Todo(db.Model):
-    """Todo Model"""
-
-    __tablename__ = 'todos'
+class User(db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.Text, nullable=False)
-    done = db.Column(db.Boolean, default=False)
+    username = db.Column(db.Text, unique=True, nullable=False)
+    password = db.Column(db.Text, nullable=False)
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-            'done': self.done
-        }
+    @classmethod
+    def register(cls, username, password):
+        """Register user w/ hashed password & return user."""
 
-    def __repr__(self):
-        return f'<Todo {self.id} title={self.title} done={self.done}>'
+        hashed = bcrypt.generate_password_hash(password)
+        # turn bytestring into normal (unicode utf8) string
+        hashed_utf8 = hashed.decode("utf8")
+
+        # return instance of user w/ username and hashed password
+        return cls(username=username, password=hashed_utf8)
+    
+    @classmethod
+    def authenticate(cls, username, password):
+        """Validate that user exists & password is correct.
+           Return user if valid; else return False.
+        """
+
+        user = User.filter_by(username=username).first()
+
+        if user and bcrypt.check_password_hash(user.password, password):
+            # return user instance
+            return user
+        else: 
+            return False
