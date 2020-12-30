@@ -35,8 +35,9 @@ class User(db.Model):
            Return user if valid; else return False.
         """
 
-        user = User.filter_by(username=username).first()
+        user = User.query.filter_by(username=username).first()
 
+        # Input form password gets hashed and checked with the stored hashed password
         if user and bcrypt.check_password_hash(user.password, password):
             # return user instance
             return user
