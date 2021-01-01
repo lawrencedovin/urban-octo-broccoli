@@ -24,7 +24,7 @@ def home_page():
 @app.route('/tweets')
 def show_tweets():
     if "user_id" not in session:
-        flash("Please login first.")
+        flash("Please login first.", 'danger')
         return redirect('/')
     return render_template('tweets.html')
 
@@ -40,7 +40,7 @@ def register_user():
         db.session.commit()
         session['user_id'] = new_user.id
 
-        flash(f'Welcome {username}! Successfully Created Your Account!')
+        flash(f'Welcome {username}! Successfully Created Your Account!', 'success')
         return redirect('/tweets')
     
     return render_template('register.html', form=form)
@@ -54,7 +54,7 @@ def login_user():
 
         user = User.authenticate(username, password)
         if user:
-            flash(f'Welcome Back {user.username}!')
+            flash(f'Welcome Back {user.username}!', 'success')
             session['user_id'] = user.id
             return redirect('/tweets')
         else: 
@@ -64,5 +64,5 @@ def login_user():
 @app.route('/logout')
 def logout_user():
     session.pop('user_id')
-    flash('Goodbye')
+    flash('Goodbye', 'danger')
     return redirect('/')
