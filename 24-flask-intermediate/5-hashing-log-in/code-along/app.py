@@ -43,6 +43,18 @@ def show_tweets():
 
     return render_template('tweets.html', form=form, tweets=all_tweets)
 
+@app.route('/tweets/<int:id>', methods=['POST'])
+def delete_tweet(id):
+    """Delete tweet"""
+    tweet = Tweet.query.get_or_404(id)
+    if tweet.user_id == session['user_id']:
+        db.session.delete(tweet)
+        db.session.commit()
+        flash('Tweet Deleted.', 'danger')
+        return redirect('/tweets')
+    flash('No permission to delete this tweet', 'danger')
+    return redirect('/tweets')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register_user():
     form = UserForm()
