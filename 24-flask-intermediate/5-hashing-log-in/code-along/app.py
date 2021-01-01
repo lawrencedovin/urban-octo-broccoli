@@ -38,7 +38,7 @@ def show_tweets():
         db.session.add(new_tweet)
         db.session.commit()
 
-        flash(f'{user.username} Successfully Created a Tweet', 'success')
+        flash(f'{user.username} Successfully Created a Tweet.', 'success')
         return redirect('/tweets')
 
     return render_template('tweets.html', form=form, tweets=all_tweets)
@@ -46,13 +46,18 @@ def show_tweets():
 @app.route('/tweets/<int:id>', methods=['POST'])
 def delete_tweet(id):
     """Delete tweet"""
+    if 'user_id' not in session:
+        flash('Please login first.', 'danger')
+        return redirect('/login')
+
     tweet = Tweet.query.get_or_404(id)
+
     if tweet.user_id == session['user_id']:
         db.session.delete(tweet)
         db.session.commit()
         flash('Tweet Deleted.', 'danger')
         return redirect('/tweets')
-    flash('No permission to delete this tweet', 'danger')
+    flash('You do not have permission to delete this tweet', 'danger')
     return redirect('/tweets')
 
 @app.route('/register', methods=['GET', 'POST'])
