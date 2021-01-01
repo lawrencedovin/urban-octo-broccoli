@@ -2,4 +2,12 @@
 
 {% block content %}
 <h1>Tweets</h1>
+
+{% include 'base_form.html' %}
+
+<ul>
+    {% for tweet in tweets %}
+    <li><b>{{tweet.user.username}}</b> - {{tweet.text}}</li>
+    {% endfor %}
+</ul>
 {% endblock %}

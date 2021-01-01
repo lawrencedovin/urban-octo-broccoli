@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 # from models import connect_db, db, User, Tweet
 from models import *
-from forms import UserForm
+from forms import UserForm, TweetForm
 from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
@@ -21,12 +21,27 @@ toolbar = DebugToolbarExtension(app)
 def home_page():
     return render_template('index.html')
 
-@app.route('/tweets')
+@app.route('/tweets', methods=['GET', 'POST'])
 def show_tweets():
     if "user_id" not in session:
         flash("Please login first.", 'danger')
         return redirect('/')
-    return render_template('tweets.html')
+    
+    form = TweetForm()
+    all_tweets = Tweet.query.all()
+
+    if form.validate_on_submit():
+        text = form.text.data
+        user = User.query.get(session['user_id'])
+        new_tweet = Tweet(text=text, user_id=user.id)
+
+        db.session.add(new_tweet)
+        db.session.commit()
+
+        flash(f'{user.username} Successfully Created a Tweet', 'success')
+        return redirect('/tweets')
+
+    return render_template('tweets.html', form=form, tweets=all_tweets)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_user():

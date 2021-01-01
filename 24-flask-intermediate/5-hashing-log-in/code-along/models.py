@@ -43,3 +43,11 @@ class User(db.Model):
             return user
         else: 
             return False
+
+class Tweet(db.Model):
+    __tablename__ = 'tweets'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    text = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    user = db.relationship('User', backref="tweets")
