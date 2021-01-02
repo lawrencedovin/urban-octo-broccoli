@@ -24,7 +24,7 @@ def home_page():
 @app.route('/tweets', methods=['GET', 'POST'])
 def show_tweets():
     if "user_id" not in session:
-        flash("Please login first.", 'danger')
+        flash('Please login first.', 'danger')
         return redirect('/')
     
     form = TweetForm()
@@ -57,7 +57,7 @@ def delete_tweet(id):
         db.session.commit()
         flash('Tweet Deleted.', 'danger')
         return redirect('/tweets')
-    flash('You do not have permission to delete this tweet', 'danger')
+    flash('You do not have permission to delete this tweet', 'info')
     return redirect('/tweets')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -86,7 +86,7 @@ def login_user():
 
         user = User.authenticate(username, password)
         if user:
-            flash(f'Welcome Back {user.username}!', 'success')
+            flash(f'Welcome Back {user.username}!', 'primary')
             session['user_id'] = user.id
             return redirect('/tweets')
         else: 
@@ -96,5 +96,5 @@ def login_user():
 @app.route('/logout')
 def logout_user():
     session.pop('user_id')
-    flash('Goodbye', 'danger')
+    flash('Goodbye', 'info')
     return redirect('/')

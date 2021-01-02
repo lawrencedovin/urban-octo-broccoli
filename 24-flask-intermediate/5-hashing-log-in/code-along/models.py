@@ -37,7 +37,7 @@ class User(db.Model):
 
         user = User.query.filter_by(username=username).first()
 
-        # Input form password gets hashed and checked with the stored hashed password
+        # Input form password first gets hashed and then checked with the stored hashed password
         if user and bcrypt.check_password_hash(user.password, password):
             # return user instance
             return user
@@ -50,4 +50,4 @@ class Tweet(db.Model):
     text = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    user = db.relationship('User', backref="tweets")
+    user = db.relationship('User', backref='tweets')
