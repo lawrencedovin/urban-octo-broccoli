@@ -1,18 +1,30 @@
-class Pokemon {
-    constructor(id) {
-        this.id = id;
-        this.types = [];
-    }
-    async getInfo() {
-        let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${this.id}`);
-        let pokemon = res.data.name;
-        console.log(pokemon);
-        res.data.types.forEach((type) => this.types.push(type.type.name));
-        // for (let type of res.data.types) {
-        //     types.push(type.type.name);
-        // }
-        console.log(`Types: ${this.types}`);
+// async function getStarWarsFilms() {
+//     const res = await axios.get('https://swapi.dev/api/films/')
+//     console.log(res)
+// }
+
+// getStarWarsFilms()
+
+async function getUser(user) {
+    try {
+        let url = `https://api.github.com/users/${user}`;
+        let response = await axios.get(url);
+        console.log(`${response.data.name}: ${response.data.bio}`);
+    } catch(e) {
+        console.log("User does not exist!");
     }
 }
 
-pokemon56 = new Pokemon(56);
+function getUser(user) {
+    let url = `https://api.github.com/users/${user}`;
+    axios.get(url)
+        .then(response => {
+            console.log(`${response.data.name}: ${response.data.bio}`);
+        })
+        .catch(e => {
+            console.log("User does not exist!", e);
+        })
+}
+
+getUser('lawrencedovin');
+getUser('lawrencedovin123');
