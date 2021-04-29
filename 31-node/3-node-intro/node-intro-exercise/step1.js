@@ -1,15 +1,17 @@
-const argv = process.argv;
 const fs = require('fs');
-const file_location = argv[argv.length -1 ];
+const process = require('process');
+
+const argv = process.argv;
+const path = argv[argv.length -1 ];
 
 function cat(path) {
     fs.readFile(path, 'utf8', (err, data) => {
         if(err) {
-            console.log(err);
+            console.error(`Error reading ${path}: ${err}`);
             process.exit(1);
         }
         console.log(`${data}`);
     })
 }
 
-cat(file_location);
+cat(path);
