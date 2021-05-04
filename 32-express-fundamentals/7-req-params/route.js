@@ -9,11 +9,13 @@ const greetings = {
     en: "hello",
     fr: "bonjour",
     ph: "mabuhay",
-    js: "konichiwa"
+    jp: "konichiwa"
 }
 
 app.get('/greet/:language', (req, res) => {
-    res.send(greetings[req.params.language]);
+    const {language} = req.params;
+    const greeting = greetings[language];
+    res.send(greeting);
 })
 
 app.listen(3000, () => {
