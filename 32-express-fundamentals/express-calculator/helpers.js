@@ -16,9 +16,9 @@ function mode(nums) {
         if (!mapping[nums[i]]) mapping[nums[i]] = 0;
         mapping[nums[i]] += 1;
     }
-    
+
     let mode = Object.keys(mapping).reduce((num1, num2) => mapping[num1] > mapping[num2] ? num1 : num2);
-    return mode
+    return parseInt(mode);
 }
 
 // NEEDS EXPRESS ERROR
