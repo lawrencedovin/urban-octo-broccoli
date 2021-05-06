@@ -1,7 +1,8 @@
 const express = require('express');
 const ExpressError = require('./expressErrors');
-// const functions = require('./appFunctions');
 const app = express();
+
+const { convertAndValidateNums } = require('./helpers');
 
 app.use(express.json());
 
@@ -11,12 +12,13 @@ function attemptToSaveToDB() {
 
 app.get("/mean", (req, res, next) => {
     try {
-        const nums = req.query.nums.split(',').map((num) => {
-            if(isNaN(parseInt(num))) {
-                return next(new ExpressError(`The value '${num}' is not a valid number.`, 400));
-            }
-            return parseInt(num);
-        });
+        // const nums = req.query.nums.split(',').map((num) => {
+        //     if(isNaN(parseInt(num))) {
+        //         return next(new ExpressError(`The value '${num}' is not a valid number.`, 400));
+        //     }
+        //     return parseInt(num);
+        // });
+        const nums = convertAndValidateNums(req.query.nums);
         let mean = nums.reduce((a, b) => a + b, 0) / nums.length;
         return res.json({
             response: {
