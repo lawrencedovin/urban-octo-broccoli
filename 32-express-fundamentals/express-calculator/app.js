@@ -1,5 +1,6 @@
 const express = require('express');
-const ExpressError = require('./expressErrors')
+const ExpressError = require('./expressErrors');
+// const functions = require('./appFunctions');
 const app = express();
 
 app.use(express.json());
@@ -8,43 +9,12 @@ function attemptToSaveToDB() {
     throw "Connection Error!";
 }
 
-const USERS = [
-    { username: "StacysMom", city: "Reno" },
-    { username: "Rosalia", city: "R" }
-]
-
-app.get("/users/:username", (req, res, next) => {
-    try {
-        const user = USERS.find(u => u.username === req.params.username);
-        if(!user) throw new ExpressError("Invalid username", 404);
-        return res.send({ user });
-    } 
-    catch(error) {
-        next(error);
-    }
-})
-
-// app.get("/mean", (req, res, next) => {
-//     // try {
-//         // const numsArray = req.params.nums.split(',');
-//         // let mean = numsArray.reduce((a, b) => a + b) / numsArray.length;
-//         console.log(req.params.nums);
-//         return res.send(req.params.nums);
-        // return res.json({
-        //     response: {
-        //         operation: "mean",
-        //         value: mean
-        //     }
-        // })
-//     // }
-//     // catch(error) {
-//     //     return next(new ExpressError("nums are required", 400));
-//     // }
-// })
-
 app.get("/mean", (req, res, next) => {
     try {
         const nums = req.query.nums.split(',').map((num) => {
+            if(isNaN(parseInt(num))) {
+                return next(new ExpressError(`The value '${num}' is not a valid number.`, 400));
+            }
             return parseInt(num);
         });
         let mean = nums.reduce((a, b) => a + b, 0) / nums.length;
@@ -58,20 +28,20 @@ app.get("/mean", (req, res, next) => {
     catch(error) {
         next(error);
     }
-})
+});
 
 
-app.get("/secret", (req, res, next) => {
-    try {
-        if (req.query.password != "popcorn") {
-            throw new ExpressError("Invalid password", 403);
-        }
-        return res.send("CONGRATS YOU KNOW THE PASSWORD");
-    }
-    catch(error) {
-        next(error);
-    }
-})
+// app.get("/secret", (req, res, next) => {
+//     try {
+//         if (req.query.password != "popcorn") {
+//             throw new ExpressError("Invalid password", 403);
+//         }
+//         return res.send("CONGRATS YOU KNOW THE PASSWORD");
+//     }
+//     catch(error) {
+//         next(error);
+//     }
+// })
 
 // app.get("/savetodb", (req, res, next) => {
 //     try {
