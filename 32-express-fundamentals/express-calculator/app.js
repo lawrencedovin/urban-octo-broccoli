@@ -42,10 +42,10 @@ app.get("/median", (req, res, next) => {
             return parseInt(num);
         });
         let sortedNumsArray = nums.sort((num1, num2) => num1-num2);
-        let median = sortedNumsArray[Math.floor(sortedNumsArray.length/2)]
+        let median = sortedNumsArray[Math.floor(sortedNumsArray.length/2)];
         return res.json({
             response: {
-                operation: "mean",
+                operation: "median",
                 value: median
             }
         });
@@ -55,27 +55,38 @@ app.get("/median", (req, res, next) => {
     }
 });
 
-// app.get("/secret", (req, res, next) => {
-//     try {
-//         if (req.query.password != "popcorn") {
-//             throw new ExpressError("Invalid password", 403);
-//         }
-//         return res.send("CONGRATS YOU KNOW THE PASSWORD");
-//     }
-//     catch(error) {
-//         next(error);
-//     }
-// })
+app.get("/mode", (req, res, next) => {
+    try {
+        if (!req.query.nums) {
+            throw new ExpressError('You must pass a query key of nums with a comma-separated list of numbers.', 400)
+        }
+        const nums = req.query.nums.split(',').map((num) => {
+            if(isNaN(parseInt(num))) {
+                return next(new ExpressError(`The value '${num}' is not a valid number.`, 400));
+            }
+            return parseInt(num);
+        });
+        let sortedNumsArray = nums.sort((num1, num2) => num1-num2);
+        let mapping = {};
 
-// app.get("/savetodb", (req, res, next) => {
-//     try {
-//         attemptToSaveToDB();
-//         return res.send("SAVED TO DB!");
-//     }
-//     catch(error){
-//         return next(new ExpressError("Database Error"));
-//     }
-// });
+        for(let i = 0; i < sortedNumsArray.length; i++) {
+            if (!mapping[sortedNumsArray[i]]) mapping[sortedNumsArray[i]] = 0;
+            mapping[sortedNumsArray[i]] += 1;
+        }
+
+        let mode = Object.keys(mapping).reduce((num1, num2) => mapping[num1] > mapping[num2] ? num1 : num2);
+
+        return res.json({
+            response: {
+                operation: "mode",
+                value: mode
+            }
+        });
+    }
+    catch(error) {
+        next(error);
+    }
+});
 
 // Default 404 error
 app.use((req, res, next) => {
