@@ -2,7 +2,7 @@ const express = require('express');
 const ExpressError = require('./expressErrors');
 const app = express();
 
-const { convertAndValidateNums } = require('./helpers');
+const { mean, median, mode } = require('./helpers');
 
 app.use(express.json());
 
@@ -17,11 +17,11 @@ app.get("/mean", (req, res, next) => {
             }
             return parseInt(num);
         });
-        let mean = nums.reduce((a, b) => a + b, 0) / nums.length;
+        let result = mean(nums);
         return res.json({
             response: {
                 operation: "mean",
-                value: mean
+                value: result
             }
         });
     }
@@ -41,12 +41,11 @@ app.get("/median", (req, res, next) => {
             }
             return parseInt(num);
         });
-        let sortedNumsArray = nums.sort((num1, num2) => num1-num2);
-        let median = sortedNumsArray[Math.floor(sortedNumsArray.length/2)];
+        let result = median(nums); 
         return res.json({
             response: {
                 operation: "median",
-                value: median
+                value: result
             }
         });
     }
@@ -66,20 +65,13 @@ app.get("/mode", (req, res, next) => {
             }
             return parseInt(num);
         });
-        let sortedNumsArray = nums.sort((num1, num2) => num1-num2);
-        let mapping = {};
 
-        for(let i = 0; i < sortedNumsArray.length; i++) {
-            if (!mapping[sortedNumsArray[i]]) mapping[sortedNumsArray[i]] = 0;
-            mapping[sortedNumsArray[i]] += 1;
-        }
-
-        let mode = Object.keys(mapping).reduce((num1, num2) => mapping[num1] > mapping[num2] ? num1 : num2);
+        let result = mode(nums);
 
         return res.json({
             response: {
                 operation: "mode",
-                value: mode
+                value: result
             }
         });
     }
