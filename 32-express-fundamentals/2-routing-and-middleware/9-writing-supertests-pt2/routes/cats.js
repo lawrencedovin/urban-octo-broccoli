@@ -7,10 +7,16 @@ router.get('/', (req, res) => {
     res.json({ cats });
 });
 
-router.post('/', (req, res) => {
-    const newCat = { name: req.body.name };
-    cats.push(newCat);
-    res.status(201).json({ cat:newCat });
+router.post('/', (req, res, next) => {
+    try {
+        if(!req.body.name) throw new ExpressError("Name is required", 400);
+        const newCat = { name: req.body.name };
+        cats.push(newCat);
+        return res.status(201).json({ cat:newCat });
+    }
+    catch(error) {
+        return next(error);
+    }
 });
 
 router.get("/:name", (req, res) => {

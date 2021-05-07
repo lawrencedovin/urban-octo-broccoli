@@ -31,14 +31,29 @@ describe("GET /cats", function() {
     });
 });
 
+describe("GET /cats/:name", function() {
+    test("Gets a single cat", async function() {
+        const res = await request(app).get(`/cats/${choco.name}`);
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual({ cat: choco });
+    });
+    test("Responds with 404 for invalid cat", async function() {
+        const res = await request(app).get(`/cats/icecube`);
+        expect(res.statusCode).toBe(404);
+    });
+});
+
+
 describe("POST /cats", function() {
     test("Creates a new cat", async function() {
-        const resp = await request(app)
-            .post('/cats')
-            .send({ name: "Ezra" });
+        const resp = await request(app).post('/cats').send({ name: "Ezra" });
         expect(resp.statusCode).toBe(201);
 
         expect(resp.body).toEqual({ cat: { name: "Ezra" } });
+    });
+    test("Responds with 400 if name is missing", async function() {
+        const resp = await request(app).post('/cats').send({});
+        expect(resp.statusCode).toBe(400);
     });
 });
 
@@ -59,5 +74,9 @@ describe("DELETE /cats/:name", function() {
         const res = await request(app).delete(`/cats/${choco.name}`);
         expect(res.statusCode).toBe(200);
         expect(res.body).toEqual({ message: `Deleted successfully!` });
+    });
+    test("Responds with 404 for invalid cat", async function() {
+        const res = await request(app).delete(`/cats/hamface`);
+        expect(res.statusCode).toBe(404);
     });
 });
