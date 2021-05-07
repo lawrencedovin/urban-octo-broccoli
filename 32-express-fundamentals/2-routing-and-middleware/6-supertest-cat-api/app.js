@@ -4,7 +4,7 @@ const catsRoutes = require('./routes/cats');
 const ExpressError = require('./expressErrors');
 
 app.use(express.json());
-app.use('/cats', catsRoute);
+app.use('/cats', catsRoutes);
 
 /** 404 handler **/
 

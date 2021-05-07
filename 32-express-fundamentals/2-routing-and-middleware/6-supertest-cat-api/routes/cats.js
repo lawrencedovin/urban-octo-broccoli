@@ -21,9 +21,22 @@ router.get("/:name", (req, res) => {
     res.json({ cat: foundCat });
 });
 
-router.patch("/:name", (req, res)) {
+router.patch("/:name", (req, res) => {
     const foundCat = cats.find(cat => cat.name === req.params.name);
-    if(foundCat === undefined) {
-        
+    if (foundCat === undefined) {
+        throw new ExpressError("Cat not found", 404);
     }
-}
+    foundCat.name = req.body.name;
+    res.json({ cat: foundCat });
+});
+
+router.delete("/:name", (req, res) => {
+    const foundCat = cats.findIndex(cat => cat.name === req.params.name);
+    if (foundCat === -1) {
+        throw new ExpressError("Cat not found", 404);
+    }
+    cats.splice(foundCat, 1);
+    res.json({ message: `Deleted ${req.body.name} successfully!` });
+});
+
+module.exports = router;
