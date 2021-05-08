@@ -38,13 +38,13 @@ router.patch("/:name", (req, res) => {
     res.json({ updated: foundItem });
 });
 
-// router.delete("/:name", (req, res) => {
-//     const foundCat = items.findIndex(cat => cat.name === req.params.name);
-//     if (foundCat === -1) {
-//         throw new ExpressError("Cat not found", 404);
-//     }
-//     items.splice(foundCat, 1);
-//     res.json({ message: `Deleted successfully!` });
-// });
+router.delete("/:name", (req, res) => {
+    const foundItem = items.findIndex(item => item.name === req.params.name);
+    if (foundItem === -1) {
+        throw new ExpressError("Item not found", 404);
+    }
+    items.splice(foundItem, 1);
+    res.json({ message: `Deleted` });
+});
 
 module.exports = router;
