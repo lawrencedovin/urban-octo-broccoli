@@ -64,17 +64,24 @@ describe("POST /items", function() {
     });
 });
 
-// describe("PATCH /cats/:name", function() {
-//     test("Updating a cat's name", async function() {
-//         const res = await request(app).patch(`/cats/${choco.name}`).send({ name: "Will Smith"});
-//         expect(res.statusCode).toBe(200);
-//         expect(res.body).toEqual({cat: {name: "Will Smith"}});
-//     });
-//     test("Responds with 404 for invalid name", async function() {
-//         const res = await request(app).patch(`/cats/Potato`).send({ name: "Will Smith"});
-//         expect(res.statusCode).toBe(404);
-//     });
-// });
+describe("PATCH /items/:name", function() {
+    test("Updating a item's name", async function() {
+        const res = await request(app)
+                            .patch(`/items/${popsicle.name}`)
+                            .send({ name: "Will Smith", price: 1.50 });
+        expect(res.statusCode).toBe(200);
+        expect(res.body)
+            .toEqual({
+                updated: { name: "Will Smith", price: 1.50 }
+            });
+    });
+    test("Responds with 404 for invalid name", async function() {
+        const res = await request(app)
+                            .patch(`/items/potato`)
+                            .send({ name: "Will Smith", price: 1.50 });
+        expect(res.statusCode).toBe(404);
+    });
+});
 
 // describe("DELETE /cats/:name", function() {
 //     test("Deleting a cat", async function() {
