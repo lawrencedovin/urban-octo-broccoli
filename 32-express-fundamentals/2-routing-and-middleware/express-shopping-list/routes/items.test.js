@@ -30,17 +30,17 @@ describe("GET /items", function() {
     });
 });
 
-// describe("GET /items/:name", function() {
-//     test("Gets a single item", async function() {
-//         const res = await request(app).get(`/cats/${choco.name}`);
-//         expect(res.statusCode).toBe(200);
-//         expect(res.body).toEqual({ cat: choco });
-//     });
-//     test("Responds with 404 for invalid cat", async function() {
-//         const res = await request(app).get(`/items/icecube`);
-//         expect(res.statusCode).toBe(404);
-//     });
-// });
+describe("GET /items/:name", function() {
+    test("Gets a single item", async function() {
+        const res = await request(app).get(`/items/${popsicle.name}`);
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual({ item: popsicle });
+    });
+    test("Responds with 404 for invalid item", async function() {
+        const res = await request(app).get(`/items/potato`);
+        expect(res.statusCode).toBe(404);
+    });
+});
 
 
 // describe("POST /cats", function() {
