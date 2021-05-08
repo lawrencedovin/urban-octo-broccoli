@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
         if(!req.body.price) throw new ExpressError("Price is required", 400);
         const newItem = { name: req.body.name, price: req.body.price };
         items.push(newItem);
-        return res.status(201).json({ added:newItem });
+        return res.status(201).json({ added: newItem });
     }
     catch(error) {
         return next(error);

@@ -43,18 +43,26 @@ describe("GET /items/:name", function() {
 });
 
 
-// describe("POST /cats", function() {
-//     test("Creates a new cat", async function() {
-//         const resp = await request(app).post('/cats').send({ name: "Ezra" });
-//         expect(resp.statusCode).toBe(201);
+describe("POST /items", function() {
+    test("Creates a new item", async function() {
+        const resp = await request(app)
+                            .post('/items')
+                            .send({ 
+                                name: "potato",
+                                price: 1.50 
+                            });
+        expect(resp.statusCode).toBe(201);
 
-//         expect(resp.body).toEqual({ cat: { name: "Ezra" } });
-//     });
-//     test("Responds with 400 if name is missing", async function() {
-//         const resp = await request(app).post('/cats').send({});
-//         expect(resp.statusCode).toBe(400);
-//     });
-// });
+        expect(resp.body)
+                .toEqual({ 
+                    added: { name: "potato", price: 1.50 } 
+                });
+    });
+    test("Responds with 400 if name is missing", async function() {
+        const resp = await request(app).post('/items').send({});
+        expect(resp.statusCode).toBe(400);
+    });
+});
 
 // describe("PATCH /cats/:name", function() {
 //     test("Updating a cat's name", async function() {
