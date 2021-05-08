@@ -83,14 +83,14 @@ describe("PATCH /items/:name", function() {
     });
 });
 
-// describe("DELETE /cats/:name", function() {
-//     test("Deleting a cat", async function() {
-//         const res = await request(app).delete(`/cats/${choco.name}`);
-//         expect(res.statusCode).toBe(200);
-//         expect(res.body).toEqual({ message: `Deleted successfully!` });
-//     });
-//     test("Responds with 404 for invalid cat", async function() {
-//         const res = await request(app).delete(`/cats/hamface`);
-//         expect(res.statusCode).toBe(404);
-//     });
-// });
+describe("DELETE /items/:name", function() {
+    test("Deleting an item", async function() {
+        const res = await request(app).delete(`/items/${popsicle.name}`);
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual({ message: `Deleted` });
+    });
+    test("Responds with 404 for invalid item", async function() {
+        const res = await request(app).delete(`/items/hamface`);
+        expect(res.statusCode).toBe(404);
+    });
+});
