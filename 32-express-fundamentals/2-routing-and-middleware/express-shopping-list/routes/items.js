@@ -7,6 +7,14 @@ router.get('/', (req, res) => {
     res.json({ items });
 });
 
+router.get("/:name", (req, res) => {
+    const foundItem = items.find(item => item.name === req.params.name);
+    if(foundItem === undefined) {
+        throw new ExpressError("Item not found", 404);
+    }
+    res.json({ item: foundItem });
+});
+
 router.post('/', (req, res, next) => {
     try {
         if(!req.body.name) throw new ExpressError("Name is required", 400);
@@ -20,22 +28,15 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.get("/:name", (req, res) => {
+router.patch("/:name", (req, res) => {
     const foundItem = items.find(item => item.name === req.params.name);
-    if(foundItem === undefined) {
+    if (foundItem === undefined) {
         throw new ExpressError("Item not found", 404);
     }
-    res.json({ item: foundItem });
+    foundItem.name = req.body.name;
+    foundItem.price = req.body.price;
+    res.json({ updated: foundItem });
 });
-
-// router.patch("/:name", (req, res) => {
-//     const foundCat = items.find(cat => cat.name === req.params.name);
-//     if (foundCat === undefined) {
-//         throw new ExpressError("Cat not found", 404);
-//     }
-//     foundCat.name = req.body.name;
-//     res.json({ cat: foundCat });
-// });
 
 // router.delete("/:name", (req, res) => {
 //     const foundCat = items.findIndex(cat => cat.name === req.params.name);
