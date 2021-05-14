@@ -27,7 +27,6 @@ buko_job = EmployeeProject(emp_id=2, proj_code='server', role='Serves Pizza')
 db.session.add_all([marketing, accounting, sales])
 db.session.add_all([billy, buko, bob, jim, ryan, freelancer])
 db.session.add_all([car, server])
-
 db.session.commit()
 
 db.session.add_all([billy_job, buko_job])

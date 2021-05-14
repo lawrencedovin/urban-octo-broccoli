@@ -63,4 +63,4 @@ ON producers_songs.song_id = songs.id
 JOIN producers
 ON producers_songs.producer_id = producers.id
 
-WHERE artists.name = 'Lady Gaga';
+WHERE albums.name = 'Prism';
