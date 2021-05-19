@@ -1,17 +1,18 @@
-/** Express app for cats. */
+/** Express app for pg-intro-demo */
 
 const express = require("express");
 const app = express();
-const catRoutes = require("./routes/cats");
 const ExpressError = require("./expressError");
 
+// Parse request bodies for JSON
 app.use(express.json());
 
-app.use("/cats", catRoutes);
+const uRoutes = require("./routes/users");
+app.use("/users", uRoutes);
 
-/** 404 catch --- passes to next handler. */
+/** 404 handler */
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   const err = new ExpressError("Not Found", 404);
 
   // pass err to the next middleware
@@ -32,6 +33,5 @@ app.use(function(err, req, res, next) {
     }
   });
 });
-
 
 module.exports = app;
