@@ -59,4 +59,19 @@ router.patch('/:id', async (req, res, next) => {
     }
 });
 
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const results = await db.query(
+            `DELETE FROM users 
+             WHERE id=$1`,
+            [id]
+        );
+        return res.json({message: 'Deleted'});
+    }
+    catch(e) {
+        next(e);
+    }
+});
+
 module.exports = router;
