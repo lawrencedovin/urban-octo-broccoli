@@ -42,6 +42,6 @@ describe("GET /users/:id", () => {
     test("Gets a single user", async() => {
         const res = await request(app).get(`/users/${testUser.id}`);
         expect(res.statusCode).toBe(200);
-        // expect(res.body).toBe([testUser]);
+        expect(res.body).toEqual({user: testUser});
     })
 });

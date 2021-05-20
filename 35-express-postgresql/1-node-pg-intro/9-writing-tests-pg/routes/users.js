@@ -21,7 +21,7 @@ router.get('/:id', async (req, res, next) => {
             `SELECT * FROM users WHERE id=$1`,
             [id]
         );
-        return res.json({user: results.rows});
+        return res.json({user: results.rows[0]});
     }
     catch(e) {
         return next(e);
