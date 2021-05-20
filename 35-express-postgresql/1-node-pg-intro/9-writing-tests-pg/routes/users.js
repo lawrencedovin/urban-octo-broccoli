@@ -3,6 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
+const ExpressError = require("../expressError");
 
 router.get("/", async (req, res, next) => {
     try {
@@ -21,6 +22,9 @@ router.get('/:id', async (req, res, next) => {
             `SELECT * FROM users WHERE id=$1`,
             [id]
         );
+        if (results.rows.length === 0) {
+            throw new ExpressError(`Can't find user with id of ${id}`, 404);
+        }
         return res.json({user: results.rows[0]});
     }
     catch(e) {

@@ -43,5 +43,9 @@ describe("GET /users/:id", () => {
         const res = await request(app).get(`/users/${testUser.id}`);
         expect(res.statusCode).toBe(200);
         expect(res.body).toEqual({user: testUser});
-    })
+    });
+    test("Responds with 404 for invalid id", async() => {
+        const res = await request(app).get(`/users/0`);
+        expect(res.statusCode).toBe(404);
+    });
 });
