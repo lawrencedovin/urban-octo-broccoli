@@ -24,14 +24,15 @@ router.get("/", async function (req, res, next) {
 
 router.get("/:id", async function (req, res, next) {
   try {
+    const { id } = req.params;
     const userRes = await db.query(
           `SELECT name, type FROM users WHERE id=$1`,
-        [req.params.id]);
+        [id]);
 
     const messagesRes = await db.query(
           `SELECT id, msg FROM messages 
              WHERE user_id = $1`,
-        [req.params.id]);
+        [id]);
 
     const user = userRes.rows[0];
     user.messages = messagesRes.rows;
@@ -43,5 +44,6 @@ router.get("/:id", async function (req, res, next) {
   }
 });
 
+// Get user: {this.name, type, messages: [{msg, msg}]}
 
 module.exports = router;
