@@ -10,12 +10,15 @@ const ExpressError = require("../expressError");
 
 router.get("/:id", async function (req, res, next) {
   try {
+    // LEFT JOIN because we can get messages even without tags
+    // INNER JOIN only always messages with tags
     const result = await db.query(
           `SELECT m.id, m.msg, t.tag
              FROM messages AS m
                LEFT JOIN messages_tags AS mt 
                  ON m.id = mt.message_id
-               LEFT JOIN tags AS t ON mt.tag_code = t.code
+               LEFT JOIN tags AS t 
+                 ON mt.tag_code = t.code
              WHERE m.id = $1;`,
         [req.params.id]);
 
