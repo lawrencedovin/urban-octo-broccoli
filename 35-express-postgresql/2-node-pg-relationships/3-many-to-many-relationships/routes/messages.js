@@ -21,6 +21,10 @@ router.get("/:id", async function (req, res, next) {
                  ON mt.tag_code = t.code
              WHERE m.id = $1;`,
         [req.params.id]);
+    
+    if(results.rows.length === 0) {
+      throw new ExpressError(`Message not found with id:${req.params.id}`, 404)
+    }
 
     let { id, msg } = result.rows[0];
     let tags = result.rows.map(r => r.tag);

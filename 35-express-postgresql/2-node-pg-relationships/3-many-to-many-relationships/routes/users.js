@@ -2,6 +2,7 @@
 
 const db = require("../db");
 const express = require("express");
+const ExpressError = require("../expressError");
 const router = express.Router();
 
 
@@ -34,6 +35,9 @@ router.get("/:id", async function (req, res, next) {
              WHERE user_id = $1`,
         [id]);
 
+    if(userRes.rows.length === 0) {
+      throw new ExpressError(`User not found with id:${id}`, 404);
+    }
     const user = userRes.rows[0];
     user.messages = messagesRes.rows;
     return res.json(user);
