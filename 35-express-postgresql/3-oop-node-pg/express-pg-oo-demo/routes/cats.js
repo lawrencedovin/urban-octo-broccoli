@@ -10,28 +10,28 @@ const router = new express.Router();
 // IMPORTANT: all of these function bodies should really be
 // wrapped in a try/catch, where catching an error calls
 // next(err) --- this is omitted here for brevity in slides
-
-
-/** get all cats: [{id, name, age}, ...] */
-
-router.get("/", async function (req, res, next) {
-  let result = await db.query("SELECT * FROM cats");
-  let cats = result.rows;
-  return res.json(cats)
-});
-
 /** (fixed) get all cats: [{id, name, age}] */
 
 router.get("/", async function (req, res, next) {
-  let cats = await Cat.getAll();
-  return res.json(cats);
+  try {
+    let cats = await Cat.getAll();
+    return res.json(cats);
+  }
+  catch(e) {
+    return next(e);
+  }
 });
 
 /** get cat by id: {id, name, age} */
 
 router.get("/:id", async function (req, res, next) {
-  let cat = await Cat.getById(req.params.id);
-  return res.json(cat);
+  try {
+    let cat = await Cat.getById(req.params.id);
+    return res.json(cat);
+  }
+  catch(e) {
+    return next(e);
+  }
 });
 
 /** create cat from {name, age}: return {name, age} */

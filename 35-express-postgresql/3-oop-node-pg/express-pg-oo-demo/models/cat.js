@@ -7,6 +7,7 @@
  * */
 
 const db = require("../db");
+const expressError = require("../expressError");
 
 
 class Cat {
@@ -27,7 +28,7 @@ class Cat {
         [id]);
 
     if (result.rows.length === 0) {
-      throw new Error(`No such cat: ${id}`);
+      throw new expressError(`No such cat: ${id}`, 404);
     }
 
     return result.rows[0];
@@ -52,7 +53,7 @@ class Cat {
         [id]);
 
     if (result.rows.length === 0) {
-      throw new Error(`No such cat: ${id}`);
+      throw new expressError(`No such cat: ${id}`, 404);
     }
   }
 
@@ -64,7 +65,7 @@ class Cat {
         [id]);
 
     if (result.rows.length === 0) {
-      throw new Error(`No such cat: ${id}`);
+      throw new expressError(`No such cat: ${id}`, 404);
     }
 
     return result.rows[0].age;
