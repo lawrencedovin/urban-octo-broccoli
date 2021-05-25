@@ -57,6 +57,20 @@ class Cat {
     }
   }
 
+  static async update(id, newName, newAge) {
+    const result = await db.query(
+        `UPDATE cats SET name = $1, age = $2 
+        WHERE id = $3 
+        RETURNING id, name, age`,
+        [newName, newAge, id]);
+
+    if (result.rows.length === 0) {
+      throw new expressError(`No such cat: ${id}`, 404);
+    }
+
+    return result.rows[0];
+  }
+
   /** age cat by 1 year, return new age */
 
   static async makeOlder(id) {
