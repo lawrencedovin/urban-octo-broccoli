@@ -22,6 +22,7 @@ router.get("/", async function (req, res, next) {
 
 router.get("/:id", async function (req, res, next) {
   let dog = await Dog.getById(req.params.id);
+  dog.speak();
   return res.json(dog);
 });
 

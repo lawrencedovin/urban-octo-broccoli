@@ -31,6 +31,10 @@ class Dog {
     return result.rows.map(d => new Dog(d.id, d.name, d.age));
   }
 
+  speak() {
+    console.log(`${this.name} says woof!`);
+  }
+
   /** get dog by id: returns dog */
 
   static async getById(id) {
