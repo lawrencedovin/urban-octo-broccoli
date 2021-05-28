@@ -1,3 +1,6 @@
-CREATE TABLE users (username TEXT NOT NULL PRIMARY KEY, password TEXT);
+CREATE TABLE users (
+    username TEXT NOT NULL PRIMARY KEY, 
+    password TEXT NOT NULL
+);
 
 \q
