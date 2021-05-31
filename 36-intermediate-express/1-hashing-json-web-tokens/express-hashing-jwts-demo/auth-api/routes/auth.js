@@ -80,6 +80,17 @@ router.post("/login", async function (req, res, next) {
 });
 // end
 
+router.get('/topsecret', async function (req, res, next) {
+  try {
+    const token = req.body._token;
+    const data = jwt.verify(token, SECRET_KEY);
+    return res.json({msg: "Signed in! This is TOP SECRET. I like Green."});
+  }
+  catch (err) {
+    return next(new ExpressError("Please login first!", 401));
+  }
+})
+
 
 /** Secret-1 route than only users can access */
 
