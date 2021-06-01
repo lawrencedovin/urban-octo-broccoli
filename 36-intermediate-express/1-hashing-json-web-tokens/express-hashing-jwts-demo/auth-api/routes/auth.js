@@ -80,17 +80,28 @@ router.post("/login", async function (req, res, next) {
 });
 // end
 
-router.get('/topsecret', async function (req, res, next) {
-  try {
-    const token = req.body._token;
-    const data = jwt.verify(token, SECRET_KEY);
-    return res.json({msg: "Signed in! This is TOP SECRET. I like Green."});
-  }
-  catch (err) {
-    return next(new ExpressError("Please login first!", 401));
-  }
+router.get('/topsecret', (req, res, next) => {
+    try {
+      const token = req.body._token;
+      const data = jwt.verify(token, SECRET_KEY);
+      return res.json({msg: "Signed in! This is TOP SECRET. I like Green."});
+    }
+    catch (err) {
+      return next(new ExpressError("Please login first!", 401));
+    }
 })
 
+router.get('/private', 
+  ensureLoggedIn, 
+  async (req, res, next) => {
+    try {
+      return res.json({msg: `Welcome to my VIP section, ${req.user.username}`});
+    }
+    catch(e) {
+      next(e);
+    }
+
+})
 
 /** Secret-1 route than only users can access */
 
