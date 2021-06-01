@@ -71,7 +71,9 @@ router.get('/topsecret',
     }
   })
 
-router.get('/private', ensureLoggedIn, (req, res, next) => {
+router.get('/private', 
+  ensureLoggedIn, 
+  (req, res, next) => {
   return res.json({ msg: `Welcome to my VIP section, ${req.user.username}` })
 })
 
