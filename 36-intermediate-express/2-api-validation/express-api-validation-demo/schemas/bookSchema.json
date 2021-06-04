@@ -20,7 +20,8 @@
         "pages",
         "publisher",
         "title",
-        "year"
+        "year",
+        "contactInfo"
       ],
       "properties": {
         "isbn": {
@@ -93,11 +94,25 @@
           ],
           "pattern": "^(.*)$"
         },
+        "contactInfo": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string",
+              "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            }
+          }
+        },
         "year": {
           "$id": "#/properties/book/properties/year",
           "type": "integer",
           "title": "The Year Schema",
           "default": 0,
+          "maximum": 2020,
           "examples": [
             2017
           ]
