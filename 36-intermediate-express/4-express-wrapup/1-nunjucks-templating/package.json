@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "jsonschema": "^1.4.0",
-    "locus": "^2.0.1"
+    "locus": "^2.0.1",
+    "nunjucks": "^3.2.3"
   },
   "devDependencies": {},
   "description": ""

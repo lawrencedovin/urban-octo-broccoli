@@ -1,16 +1,19 @@
 const express = require("express");
 const app = express();
-const ExpressError = require("./expressError");
+const nunjucks = require("nunjucks");
 
-app.use(express.json());
+app.set("view engine", "html");
+nunjucks.configure("views", {
+  autoescape: true,
+  express: app
+});
 
-const bookRoutes = require("./routes/books");
+app.get("/", (req, res, next) => {
+  res.render("index");
+});
 
-app.use("/books", bookRoutes);
-
-app.use(function(req, res, next) {
-  const err = new ExpressError("Not found!", 404);
-  return next(err);
+app.get("/dogs/:name", (req, res, next) => {
+  res.render("dog", { name: req.params.name });
 });
 
 app.use(function(err, req, res, next) {
