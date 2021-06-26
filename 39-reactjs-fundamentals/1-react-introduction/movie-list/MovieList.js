@@ -8,7 +8,6 @@ const MovieList = () => {
 	)
 };
 
-
 // const MovieList = () => {
 // 	return (
 // 		<ul>
@@ -19,6 +18,8 @@ const MovieList = () => {
 // 	);
 // };
 
+
+// Nests MovieList Component inside the App component
 const App = () => {
 	return (
 		<div>
