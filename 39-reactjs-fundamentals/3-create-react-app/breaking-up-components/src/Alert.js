@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Alert = (({variant='success', children}) => {
     const colors = {
         success: 'green',

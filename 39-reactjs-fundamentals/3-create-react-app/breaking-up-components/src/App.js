@@ -1,12 +1,16 @@
+import React from 'react';
 import items from './Items';
 import ShoppingCart from './ShoppingCart';
 import Alert from './Alert';
+import Greeting from './Greeting'
 import './App.css';
 import logo from './logo.svg';
 
 function App() {
   return (
     <div>
+
+      <Greeting />
 
       <Alert variant="success">
         <h1>Welcome Back!</h1>
