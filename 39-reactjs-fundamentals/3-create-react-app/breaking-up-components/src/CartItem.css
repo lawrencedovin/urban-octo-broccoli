@@ -1,0 +1,8 @@
+.CartItem {
+
+    border-bottom: 2px solid blueviolet;
+}
+
+.CartItem__img {
+    width: 200px;
+}

@@ -10,7 +10,7 @@ const ShoppingCart = (({items}) => {
                 <ul>
                 <li>Price: ${item.price}</li>
                 <li>Quantity: {item.qty}</li>
-                <li>Subtotal: ${item.price*item.qty}</li>
+                <li>Subtotal: ${item.price * item.qty}</li>
                 </ul>
             </div>
             ))}

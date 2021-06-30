@@ -1,4 +1,6 @@
 import CartItem from "./CartItem";
+import "./ShoppingCart.css";
+
 const ShoppingCart = (({ items, username}) => {
 
     const total = items.reduce((acc, item) => {
@@ -6,14 +8,14 @@ const ShoppingCart = (({ items, username}) => {
     }, 0);
 
     return (
-      <div>
-        <h1>{username}'s Shopping Cart</h1>
+      <div className="ShoppingCart">
+        <h1 className="ShoppingCart__header">{username}'s Shopping Cart</h1>
         <div>
             {items.map(item => (
               <CartItem name={item.name} img={item.img} price={item.price} qty={item.qty}/>
             ))}
         </div>
-        <b>Total ${total}</b>
+        <b className="ShoppingCart__total">Total ${total}</b>
       </div>
     );
 })

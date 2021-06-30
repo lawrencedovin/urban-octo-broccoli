@@ -1,0 +1,15 @@
+.ShoppingCart {
+    border: 2px solid black;
+    width: 40em;
+    margin: 20px;
+    padding: 20px;
+}
+
+.ShoppingCart__header {
+    text-align: center;
+}
+
+.ShoppingCart__total {
+    font-size: 1.3rem;
+    color: olivedrab;
+}

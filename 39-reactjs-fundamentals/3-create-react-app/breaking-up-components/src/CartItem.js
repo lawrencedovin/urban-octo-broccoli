@@ -1,8 +1,10 @@
+import './CartItem.css';
+
 const CartItem = (({name, img, price, qty}) => {
     return (
-        <div>
+        <div className="CartItem">
             <h4>{name}</h4>
-            <img src={img} width="200" alt={name}/>
+            <img className="CartItem__img" src={img} alt={name}/>
             <ul>
             <li>Price: ${price}</li>
             <li>Quantity: {qty}</li>
