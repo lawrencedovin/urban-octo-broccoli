@@ -13,7 +13,7 @@ const ShoppingCart = (({ items, username}) => {
         <h1 className="ShoppingCart__header">{username}'s Shopping Cart</h1>
         <div>
             {items.map(item => (
-              <CartItem name={item.name} img={item.img} price={item.price} qty={item.qty}/>
+              <CartItem key={item.id} name={item.name} img={item.img} price={item.price} qty={item.qty}/>
             ))}
         </div>
         <b className="ShoppingCart__total">Total ${total}</b>
