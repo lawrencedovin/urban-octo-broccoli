@@ -6,7 +6,7 @@ function Counter() {
 
     return (
         <div>
-            <h1>Let's count</h1>
+            <h1>Let's count!</h1>
             <h2>Current count: {count}</h2>
             <button onClick={increment}>Add</button>
         </div>
