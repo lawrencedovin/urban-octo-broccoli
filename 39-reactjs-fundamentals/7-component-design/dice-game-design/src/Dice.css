@@ -1,0 +1,8 @@
+.Die {
+    display: inline-block;
+    margin: 20px;
+    padding: 8px 20px;
+    color: white;
+    background: blue;
+    font-size: 32px;
+}
