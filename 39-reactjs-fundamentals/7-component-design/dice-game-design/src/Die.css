@@ -1,0 +1,10 @@
+.Die {
+    display: inline-block;
+    width: 3em;
+    height: 2.25em;
+    padding-top: .75em;
+    color: white;
+    margin-right: .5em;
+    background: rgb(0, 172, 57);
+    font-size: 1.5em;
+}

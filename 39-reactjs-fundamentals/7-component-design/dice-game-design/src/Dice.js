@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Die from './Die';
 import './Dice.css';
 
 const Dice = (({numDice=6, title='Main Game', maxVal=20}) => {
@@ -15,10 +16,12 @@ const Dice = (({numDice=6, title='Main Game', maxVal=20}) => {
     // }
     // const random = () => setNumbers(dice);
     return (
-        <div>
-            <h1>{title}</h1>
+        <div className="Dice">
+            <h2>{title}</h2>
             {/* {dice.map(num => <div className="Die">{num}</div>)} */}
-            {numbers.map(num => <div className="Die">{num}</div>)}
+            <div>
+                {numbers.map(num => <Die num={num} />)}
+            </div>
             <button onClick={rollDice}>Roll</button>
         </div>
     );
