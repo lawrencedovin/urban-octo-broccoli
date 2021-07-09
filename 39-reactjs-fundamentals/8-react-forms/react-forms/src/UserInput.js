@@ -1,18 +1,18 @@
 import React from 'react';
 import capitalize from './helpers';
 
-const UserInput = (({inputName, inputValue, handleChange}) => {
+const UserInput = (({name, value, type, handleChange}) => {
     return (
         <>
-        <label htmlFor={inputName}>{capitalize(inputName)}</label>
-        <input 
-            id={inputName} 
-            type={inputName === 'password' ? 'password' : 'text'} 
-            name={inputName} 
-            placeholder={inputName} 
-            value={inputValue} 
-            onChange={handleChange}
-        />
+            <label htmlFor={name}>{capitalize(name)}</label>
+            <input 
+                id={name} 
+                type={type} 
+                name={name} 
+                placeholder={name} 
+                value={value} 
+                onChange={handleChange}
+            />
         </>
     );
 });

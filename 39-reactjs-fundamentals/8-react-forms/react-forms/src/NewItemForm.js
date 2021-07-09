@@ -19,21 +19,25 @@ const NewItemForm = ({ addItem }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const {name, quantity} = formData;
-        addItem(name, quantity);
+        // Good for scaling, if you have more fields
+        // other than name and quantity it automatically
+        // adds that to the spread.
+        addItem({...formData});
         setFormData(INITIAL_STATE);
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <UserInput 
-                inputName="name" 
-                inputValue={formData.name} 
+                name="name" 
+                value={formData.name} 
+                type="text"
                 handleChange={handleChange}
             />
             <UserInput 
-                inputName="quantity" 
-                inputValue={formData.quantity} 
+                name="quantity" 
+                value={formData.quantity}
+                type="number" 
                 handleChange={handleChange}
             />
             <button>Add Item</button>
