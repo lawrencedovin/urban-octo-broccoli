@@ -1,6 +1,7 @@
 import UserForm from './UserForm';
 import UserFormBak from './UserFormBak';
 import UserFormTutorial from './UserFormTutorial';
+import ShoppingList from './ShoppingList';
 import './App.css';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <div className="App">
       {/* <UserForm /> */}
       {/* <UserFormBak /> */}
-      <UserFormTutorial />
+      {/* <UserFormTutorial /> */}
+      <ShoppingList />
     </div>
   );
 }

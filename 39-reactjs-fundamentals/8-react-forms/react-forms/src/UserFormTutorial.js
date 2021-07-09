@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import UserInput from './UserInput';
 
 const UserFormTutorial = (() => {
-    const INITIALSTATE = {
+    const INITIAL_STATE = {
         username: '',
         email: '',
         password: ''
     }
-    const [formData, setFormData] = useState(INITIALSTATE);
+    const [formData, setFormData] = useState(INITIAL_STATE);
 
     const handleChange = e => {
         const {name, value} = e.target;
@@ -23,7 +23,7 @@ const UserFormTutorial = (() => {
         e.preventDefault();
         const {username, email, password} = formData;
         alert(`Created user, ${username} w/ email ${email} & password ${password}`);
-        setFormData(INITIALSTATE);
+        setFormData(INITIAL_STATE);
     }
 
     return (
