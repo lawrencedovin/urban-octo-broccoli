@@ -3,15 +3,20 @@ import React, { useState } from 'react';
 const UserForm = (() =>{
     const [username, setUsername] = useState('');
 
-    let handleChange = ((e) => {
+    const handleChange = ((e) => {
         let {value} = e.target;
-        console.log(value);
         setUsername(value);
     });
 
+    const handleSubmit = ((e) => {
+        e.preventDefault();
+        alert(`Created user: ${username}`);
+        setUsername('');
+    })
+
     return (
-        <form>
-            <input type="text" value={username} placeholder='username' onChange={handleChange}/>
+        <form onSubmit={handleSubmit}>
+            <input type='text' placeholder='username' value={username} onChange={handleChange}/>
             <button>Click me</button>
         </form>
     );
