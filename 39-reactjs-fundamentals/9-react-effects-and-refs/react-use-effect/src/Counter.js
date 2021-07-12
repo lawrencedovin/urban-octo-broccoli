@@ -13,6 +13,9 @@ const Counter = (() => {
         document.title = `Hi ${'!'.repeat(count)}`;
     })
 
+    // 2nd argument don't change after every render of the page
+    // Run only if a certain value like count changes
+
     return (
         <div>
             {console.log("RENDERING!")}
