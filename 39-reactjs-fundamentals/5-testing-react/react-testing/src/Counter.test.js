@@ -12,7 +12,7 @@ test('playing with queries', () => {
 });
 
 test('button clicks', () => {
-    const { getByText} = render(<Counter/>);
+    const { getByText } = render(<Counter/>);
     const h2 = getByText('Current count: 0');
     const btn = getByText('Add');
     fireEvent.click(btn);
