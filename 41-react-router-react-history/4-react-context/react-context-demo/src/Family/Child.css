@@ -1,4 +1,5 @@
 .Child {
+    width: 500px;
     border: solid 2px blue;
     padding: 20px;
 }

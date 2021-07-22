@@ -9,7 +9,7 @@ const Child = () => {
         setCount(count + 1);
     }
     return (
-        <CountContext.Provider value={count}>
+        <CountContext.Provider value={{count, addToCount}}>
             <div className="Child">
                 <p>I'm the child!</p>
                 <p>I own count. It is: {count}</p>
