@@ -1,10 +1,16 @@
+import React from 'react';
 import './App.css';
-import Child from './Family/Child'
+import NavBar from './NavBar';
+import Child from './Family/Child';
+import ThemeProvider from './Family/ThemeProvider';
 
 function App() {
   return (
     <div className="App">
-      <Child />
+      <ThemeProvider>
+        <NavBar />
+        <Child />
+      </ThemeProvider>
     </div>
   );
 }
