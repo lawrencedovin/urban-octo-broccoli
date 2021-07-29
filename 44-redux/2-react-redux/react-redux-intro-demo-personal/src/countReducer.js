@@ -1,4 +1,4 @@
-const INITIAL_STATE = {count: 0};
+const INITIAL_STATE = { count: 0 };
 
 const countReducer = (state=INITIAL_STATE, action) => {
     switch(action.type) {
