@@ -25,7 +25,7 @@ const Math = () => {
 
     return (
         <>
-            <h1>MATHHHHHH (◡ ω ◡)</h1>
+            <h1>MATHHHHHH ღ(U꒳Uღ)</h1>
             <ul>
                 <li>SUM: {math(num1, num2, 'SUM')}</li>
                 <li>DIFFERENCE: {math(num1, num2, 'DIFFERENCE')}</li>

@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from 'react';
 import './NumberInput.css';
 
@@ -9,20 +9,15 @@ const NumberInput = () => {
         num2: 0
     }
 
-    const [formData, setFormData] = useState(INITIAL_STATE)
-
-    const { num1, num2 } = useSelector(state => ({
-        num1: state.num1,
-        num2: state.num2
-    }));
+    const [formData, setFormData] = useState(INITIAL_STATE);
 
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({type: 'CHANGE_NUM', [num1]: 20});
-        dispatch({type: 'CHANGE_NUM', num2});
-        alert(`num1: ${formData.num1} num2: ${formData.num2}`);
+        dispatch({type: 'CHANGE_NUM', num: 'num1', value: formData.num1});
+        dispatch({type: 'CHANGE_NUM', num: 'num2', value: formData.num2});
+        // alert(`num1: ${formData.num1} num2: ${formData.num2}`);
         setFormData(INITIAL_STATE);
     }
 
@@ -30,6 +25,12 @@ const NumberInput = () => {
         const {name, value} = e.target;
         setFormData(formData => ({...formData, [name]: value}));
     }
+
+    // {
+    //     type: 'CHANGE_NUM',
+    //     num: 'num2',
+    //     value: 5
+    // }
 
     return (
         <form onSubmit={handleSubmit}>
