@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
-    num1: 0,
-    num2: 0
+    num1: 5,
+    num2: 7
 }
 
 const numberReducer = (state=INITIAL_STATE, action) => {
