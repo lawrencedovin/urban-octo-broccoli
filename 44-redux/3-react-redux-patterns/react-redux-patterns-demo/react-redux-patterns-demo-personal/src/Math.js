@@ -1,12 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 const Math = () => {
+
+    // const {num1, num2} = useSelector(state => ({
+    //     num1: state.num1,
+    //     num2: state.num2
+    // }));
 
     const {num1, num2} = useSelector(state => ({
         num1: state.num1,
         num2: state.num2
-    }));
+    }), shallowEqual);
 
     const math = (num1, num2, expression) => {
         switch(expression) {
