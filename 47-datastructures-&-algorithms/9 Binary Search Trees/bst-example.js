@@ -10,6 +10,17 @@ class BinarySearchTree {
     constructor(root=null) {
         this.root = root;
     }
+
+    find(val) {
+        let current = this.root;
+        while(current) {
+            console.log(current.val);
+            if(current.val === val) return `Found: ${val}`;
+            current = val < current.val
+                      ? current.left
+                      : current.right
+        }
+    }
 }
 
 const E = new Node('E');
@@ -30,3 +41,4 @@ E.right = G;
 G.left = F;
 
 const tree = new BinarySearchTree(E);
+console.log(tree.find('D'));
