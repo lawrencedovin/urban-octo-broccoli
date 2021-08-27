@@ -11,6 +11,12 @@ class BinarySearchTree {
         this.root = root;
     }
 
+    traverse(node=this.root) {
+        if(node.left) this.traverse(node.left);
+        console.log(node.val);
+        if(node.right) this.traverse(node.right);
+    }
+
     find(val) {
         let current = this.root;
         while(current) {
