@@ -25,6 +25,25 @@ class FriendGraph {
         person1.adjacent.add(person2);
         person2.adjacent.add(person1);
     }
+
+    areConnected(person1, person2) {
+        let toVisitQueue = [person1];
+        let seen = new Set(toVisitQueue);
+
+        while(toVisitQueue.length) {
+            let currentPerson = toVisitQueue.shift();
+
+            if(currentPerson === person2) return true;
+
+            for(let neighbor of currentPerson.adjacent) {
+                // if neighbor was not seen
+                if(!seen.has(neighbor)){
+                    toVisitQueue.push(neighbor);
+                    seen.add(neighbor);
+                }
+            }
+        }
+    }
     
 }
 
@@ -34,10 +53,21 @@ const maggie = new PersonNode('maggie');
 const lisa = new PersonNode('lisa');
 const grampa = new PersonNode('grampa');
 const simpsons = new FriendGraph();
+
 simpsons.addPeople([homer, marge, maggie, lisa, grampa]);
 simpsons.setFriends(homer, marge);
 simpsons.setFriends(maggie, homer);
 simpsons.setFriends(maggie, marge);
 simpsons.setFriends(maggie, lisa);
 simpsons.setFriends(lisa, grampa);
-console.log(simpsons);
+
+const moe = new PersonNode('moe');
+const barney = new PersonNode('barney');
+const lenny = new PersonNode('lenny');
+
+simpsons.addPeople([moe, barney, lenny]);
+simpsons.setFriends(moe, barney);
+simpsons.setFriends(lenny, barney);
+
+console.log(simpsons.areConnected(homer, lisa));
+console.log(simpsons.areConnected(lenny, homer));
