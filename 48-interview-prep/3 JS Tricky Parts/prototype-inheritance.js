@@ -5,13 +5,14 @@ function Animal(species) {
 
 Animal.prototype.stopFeeding = function() {
     if(this.isFed) { 
-        this.Fed = false;
+        this.isFed = false;
         return `The ${this.species} stopped being fed.`
     }
     return `Already isn't being fed`;
 }
 
 function Dog(name, breed, age) {
+    Animal.call(this, 'dog');
     this.name = name;
     this.breed = breed;
     this.age = age;
@@ -31,6 +32,5 @@ Dog.prototype = Object.create(Animal.prototype);
 const ruf = new Dog('ruf', 'pug', 2);
 
 // Fails since there's no this.species or this.isFed in Dog
-console.log(ruf.isFed);
 console.log(ruf.stopFeeding());
-console.log(ruf.isFed);
+console.log(ruf.stopFeeding());
