@@ -29,6 +29,20 @@ class Stack {
         // Update size
         this.size++;
     }
+
+    pop() {
+        // traverse and if this.next === this.tail then store that value 
+        // update that to the new tail. make that value also point next to null.
+        let currentNode = this.first;
+        let newTail;
+        while(currentNode) {
+            if(currentNode.next === this.last) newTail = currentNode;
+            currentNode = currentNode.next;
+        }
+        console.log(`${this.last.val} has been removed.`);
+        this.last = newTail;
+        this.last.next = null;
+    }
 }
 
 class Node {
@@ -52,4 +66,9 @@ insects.last = caterpillarNode;
 
 insects.push("dragonfly");
 insects.push("beetle");
+insects.traverse();
+
+console.log("================after pop====================");
+insects.pop("beetle");
+insects.pop("ant");
 insects.traverse();
