@@ -1,6 +1,12 @@
 // (Last In First Out - Last in in from the front of the list 
 // is the first one to get out)
 
+// Big O Notation for Singly Linked List
+// Pushing an element onto stack: O(1)
+// Popping an element off the stack: O(1)
+// Peeking at the element at the top of the stack: O(1)
+// Searching for an element in the stack: O(n)
+
 /** Node: node for a stack. */
 
 class Node {
