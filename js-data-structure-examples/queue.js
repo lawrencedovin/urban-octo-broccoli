@@ -1,6 +1,12 @@
 // (First In First Out - First in from the front of the list 
 // is the first one to get out)
 
+// Big O Notation for Doubly Linked List
+// Enqueuing an element into the queue: O(1)
+// Dequeueing an element into the queue: O(1)
+// Peeking at the element at the front of the queue: O(1)
+// Searching for an element in the queue: O(n)
+
 /** Node: node for a queue. */
 
 class Node {
